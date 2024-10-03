@@ -28,5 +28,8 @@
 void	init_stack_a(t_stack **stack_a, char **argv);
 int		check_dupes(char **argv);
 int		check_digit(char **argv);
+void	ft_check_for_errors(int argc, char **argv);
+void	ft_error(void);
+void	init_parse_stack_a(t_stack **stack_a, char **argv);
 
 #endif
