@@ -26,15 +26,19 @@ int	main(int argc, char **argv)
 		init_parse_stack_a(&stack_a, argv);
 	else
 		init_stack_a(&stack_a, argv);
+	if (ft_lstsize(stack_a) < 2)
+		ft_error();
+	if (!check_if_sorted(stack_a))
+		(ft_sort(*stack_a));
 	while (stack_a)
 	{
-		printf("%s\n", (char *)stack_a->content);
+		printf("%i\n", *(int *)stack_a->number);
 		stack_a = stack_a->next;
 	}
 	return (0);
 }
 
-// In this function I'm taking arguments passed and checking for dupes and non didigts.
+// In this function I'm taking arguments passed and checking for dupes and non digits.
 // BUG: I need to fix quoted multiple numbers >> split.
 void	ft_check_for_errors(int argc, char **argv)
 {
@@ -43,9 +47,6 @@ void	ft_check_for_errors(int argc, char **argv)
 	i = 0;
 	if (argc == 2)
 	{
-		int	i;
-
-		i = 0;
 		while (argv[1][i] != '\0')
 		{
 			if ((argv[1][i] == 32) || (ft_isdigit(argv[1][i])))
@@ -105,14 +106,44 @@ int	check_dupes(char **argv)
 void	init_stack_a(t_stack **stack_a, char **argv)
 {
 	int	i;
+	int	*num_ptr;
 
 	i = 1;
 	while (argv[i] != NULL)
 	{
-		ft_lstadd_backdouble(stack_a, ft_lstnew_double(argv[i]));
+		num_ptr = malloc(sizeof(int));
+		if (!num_ptr)
+		{
+			free(num_ptr);
+			ft_error();
+		}
+		*num_ptr = atoi(argv[i]);
+		ft_lstadd_backdouble(stack_a, ft_lstnew_double(num_ptr));
 		i++;
 	}
-	argv[i] = NULL;
+}
+
+void	init_parse_stack_a(t_stack **stack_a, char **argv)
+{
+	char	**temp;
+	int		i;
+	int		*num_ptr;
+	
+	temp = ft_split(argv[1], 32);
+	i = 0;
+	while (temp[i])
+	{
+		num_ptr = malloc(sizeof(int));
+		if (!num_ptr)
+		{
+			free(num_ptr);
+			ft_error();
+		}
+		*num_ptr = atoi(temp[i]);
+		ft_lstadd_backdouble(stack_a, ft_lstnew_double(num_ptr));
+		i++;
+	}
+	free(temp); // check if it is working
 }
 
 void	ft_error(void)
@@ -121,18 +152,22 @@ void	ft_error(void)
 	exit (1);
 }
 
-void	init_parse_stack_a(t_stack **stack_a, char **argv)
+int	check_if_sorted(t_stack *stack_a)
 {
-	char	**temp;
-	int		i;
-
-	temp = ft_split(*argv, 32);
-	i = 0;
-	while (temp)
+	int	*i;
+	
+	i = stack_a->number;
+	while(stack_a)
 	{
-		temp[i] = atoi(temp[i]);
-		ft_lstadd_backdouble(stack_a, ft_lstnew_double(atoi(&temp[1][i])));
-		i++;
+		if (i > stack_a->number)
+			return (0);
+		i = stack_a->number;
+		stack_a = stack_a->next;
 	}
-	argv[1] = NULL;
+	return (1);
+}
+
+t_stack	ft_sort(t_stack stack_a)
+{
+	return (stack_a);
 }
