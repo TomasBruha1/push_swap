@@ -12,4 +12,11 @@
 
 #include "push_swap.h"
 
-void	ft_sa(t_stack )
+void	ft_sa(t_stack **stack_a, int print)
+{
+	t_stack	*temp;
+
+	temp = ;
+	if (print == 1)
+		write(1, "sa\n", 3);
+}
