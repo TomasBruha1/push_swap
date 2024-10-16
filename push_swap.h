@@ -34,5 +34,10 @@ void	ft_check_for_errors(int argc, char **argv);
 void	ft_error(void);
 void	init_parse_stack_a(t_stack **stack_a, char **argv);
 t_stack	ft_sort(t_stack stack_a);
+void	ft_sa(t_stack **stack_a, int print);
+void	ft_sb(t_stack **stack_b, int print);
+void	ft_ss(t_stack **stack_a, t_stack **stack_b, int print);
+void	ft_pb(t_stack **stack_a, t_stack **stack_b, int print);
+void	ft_pa(t_stack **stack_a, t_stack **stack_b, int print);
 
 #endif
