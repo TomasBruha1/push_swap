@@ -4,15 +4,26 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack *b; // Maybe needed later. Let's leave it here for now.
+	int		i;
 
 	a = NULL;
 	b = NULL;
+	i = 1;
 	if (argc < 2 || argv[1][0] == '\0')
 		ft_error();
+	printf("start\n");
 	if (argc == 2)
 		init_parse_stack(&a, argv);
-	// if (argc > 2)
-	// 	init_stack(&a, argv);
+	if (argc > 2)
+		init_stack(&a, argv);
+	printf("after init\n");
+	while (a != NULL)
+	{
+		printf("node %d: %d\n", i, a->number);
+		a = a->next;
+		i++;
+	}
+	printf("end\n");
 	// check_duplicates(a);
 	// is_sorted(a);
 	return (0);	
@@ -24,11 +35,12 @@ void	init_parse_stack(t_stack **a, char **argv)
 {
 	char	**temp;
 	int		i;
-	int		*arg;
+	char	*arg;
 
+	printf("init parse stack\n");
 	temp = ft_split(*argv, ' ');
-	i = 0;
-	while (temp[i]) // different for other init
+	i = 1;
+	while (temp[i])
 	{
 		arg = malloc(sizeof(int));
 		if (!arg)
@@ -38,52 +50,68 @@ void	init_parse_stack(t_stack **a, char **argv)
 		}
 		if (is_arg_valid(arg))
 			ft_error();
-		*arg = ft_atoi(temp[i]); // different for other init
+		*arg = ft_atoi(temp[i]);
 		ft_dlstadd_back(a, ft_dlstnew(arg));
 		i++;
 	}
-	free(temp); // different for other init
+	free(temp);
+}
+
+// Here I initialize stack a with arguments from argv. They are checked
+// by is_arg_valid before that.
+void	init_stack(t_stack **a, char **argv)
+{	
+	int		i;
+	char	*arg; // I need to change it back to int so I can have 256+.
+
+	printf("init multiple arguments stack\n");
+	i = 1;
+	printf("%s\n", argv[1]);
+	printf("%s\n", argv[2]);
+	while (argv[i] != NULL)
+	{
+		arg = malloc(sizeof(int));
+		if (!arg)
+		{
+			free(arg);
+			ft_error();
+		}
+		*arg = *argv[i];
+		printf("pred arg checkem: %s\n", arg);
+		if (is_arg_valid(arg))
+			ft_error();
+		*arg = atoi(argv[i]);
+		ft_dlstadd_back(a, ft_dlstnew(arg));
+		i++;
+	}
 }
 
 // I will send args from argv[] parsed or not and check if their ok.
 // Checks if number, dupes, int MIN/MAX.
-int	is_arg_valid(int *arg)
+int	is_arg_valid(char *arg)
 {
 	int i;
 	
+	printf("inside is_arg_valid\n");
+	printf("pasnuto do argu arg: %i\n", *arg);
 	i = 0;
 	if (arg[i] == '-' || arg[i] == '+')
 		i++;
-	if (!ft_isdigit(arg[i++]))
-		return (1);
+	while (arg[i])
+	{
+		printf("value of arg: %i\n", *arg);
+		if (!ft_isdigit(arg[i]))
+			return (1);
+		i++;
+	}
 	i = 0;
 //	if ()
-
-
+	printf("VALID and leaving\n\n");
 	return (0);
 }
 
 // void	check_duplicates(t_stack **a);
 
-// void	init_stack_a(t_stack **stack_a, char **argv)
-// {	
-// 	int	i;
-// 	int	*num_ptr;
-
-// 	i = 1;
-// 	while (argv[i] != NULL)
-// 	{
-// 		num_ptr = malloc(sizeof(int));
-// 		if (!num_ptr)
-// 		{
-// 			free(num_ptr);
-// 			ft_error();
-// 		}
-// 		*num_ptr = atoi(argv[i]);
-// 		ft_lstadd_backdouble(stack_a, ft_lstnew_double(num_ptr));
-// 		i++;
-// 	}
-// }
 
 
 // int	check_if_sorted(t_stack *stack_a)
