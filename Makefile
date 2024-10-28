@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tbruha <tbruha@student.42Prague.com>       +#+  +:+       +#+         #
+#    By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 15:34:26 by tbruha            #+#    #+#              #
-#    Updated: 2024/09/23 15:34:28 by tbruha           ###   ########.fr        #
+#    Updated: 2024/10/28 20:12:38 by tbruha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,17 @@ RM		= rm -f
 CC		= cc
 INCLUDE	= -L ./libft -lft
 
-SRC		= 	push_swap.c
-
+SRC		= 	push_swap.c list_utils.c operations_swap_and_push.c \
+			operations_rotations.c operations_reverse_rotations.c \
+			ft_errors.c
+			
 OBJ		:=	$(SRC:%.c=%.o)
 
 all:	$(NAME)
 
 $(NAME): $(OBJ)
 	@make -C libft/
-#	@cp libft/libft.a ./
-	@$(CC) $(CFLAGS) $(SRC) $(INCLUDE) libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME)
 	
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $<	

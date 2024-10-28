@@ -1,173 +1,127 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tbruha <tbruha@student.42Prague.com>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 15:34:32 by tbruha            #+#    #+#             */
-/*   Updated: 2024/09/23 15:34:36 by tbruha           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-// Here I check for argument, initialized t_stack and send arguments for checks.
-// After that I add numbers to stack_a.
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
+	t_stack	*a;
+	t_stack *b; // Maybe needed later. Let's leave it here for now.
 
-	if (argc < 2)
+	a = NULL;
+	b = NULL;
+	if (argc < 2 || argv[1][0] == '\0')
 		ft_error();
-	stack_a = NULL;
-	ft_check_for_errors(argc, argv);
 	if (argc == 2)
-		init_parse_stack_a(&stack_a, argv);
-	else
-		init_stack_a(&stack_a, argv);
-	if (ft_lstsize(stack_a) < 2)
-		ft_error();
-	if (!check_if_sorted(stack_a))
-		(ft_sort(*stack_a));
-	while (stack_a)
-	{
-		printf("%i\n", *(int *)stack_a->number);
-		stack_a = stack_a->next;
-	}
-	return (0);
+		init_parse_stack(&a, argv);
+	// if (argc > 2)
+	// 	init_stack(&a, argv);
+	// check_duplicates(a);
+	// is_sorted(a);
+	return (0);	
 }
 
-// In this function I'm taking arguments passed and checking for dupes and non digits.
-// BUG: I need to fix quoted multiple numbers >> split.
-void	ft_check_for_errors(int argc, char **argv)
-{
-	int	i;
-	
-	i = 0;
-	if (argc == 2)
-	{
-		while (argv[1][i] != '\0')
-		{
-			if ((argv[1][i] == 32) || (ft_isdigit(argv[1][i])))
-				i++;
-			else
-				ft_error();
-		}
-	}
-	else if (check_digit(argv))
-		ft_error();
-	else if (check_dupes(argv))
-		ft_error();
-}
-
-int	check_digit(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i] != NULL)
-	{
-		j = 0;
-		while (argv[i][j] != '\0')
-		{
-			if (j == 0 && argv[i][j] == '-' && argv[i][j+1] != '\0')
-				j++;
-			if (ft_isdigit(argv[i][j]) == 0)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	check_dupes(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i] != NULL)
-	{
-		j = i + 1;
-		while ((argv[j]) != NULL)
-		{
-			if (ft_strncmp(argv[i], argv[j], 10) == 0)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-void	init_stack_a(t_stack **stack_a, char **argv)
-{
-	int	i;
-	int	*num_ptr;
-
-	i = 1;
-	while (argv[i] != NULL)
-	{
-		num_ptr = malloc(sizeof(int));
-		if (!num_ptr)
-		{
-			free(num_ptr);
-			ft_error();
-		}
-		*num_ptr = atoi(argv[i]);
-		ft_lstadd_backdouble(stack_a, ft_lstnew_double(num_ptr));
-		i++;
-	}
-}
-
-void	init_parse_stack_a(t_stack **stack_a, char **argv)
+// It returns array with numbers(or other stuff) -> I will check args after.
+// argv[i] will be the same as array with args.
+void	init_parse_stack(t_stack **a, char **argv)
 {
 	char	**temp;
 	int		i;
-	int		*num_ptr;
-	
-	temp = ft_split(argv[1], 32);
+	int		*arg;
+
+	temp = ft_split(*argv, ' ');
 	i = 0;
-	while (temp[i])
+	while (temp[i]) // different for other init
 	{
-		num_ptr = malloc(sizeof(int));
-		if (!num_ptr)
+		arg = malloc(sizeof(int));
+		if (!arg)
 		{
-			free(num_ptr);
+			free(arg);
 			ft_error();
 		}
-		*num_ptr = atoi(temp[i]);
-		ft_lstadd_backdouble(stack_a, ft_lstnew_double(num_ptr));
+		if (is_arg_valid(arg))
+			ft_error();
+		*arg = ft_atoi(temp[i]); // different for other init
+		ft_dlstadd_back(a, ft_dlstnew(arg));
 		i++;
 	}
-	free(temp); // check if it is working
+	free(temp); // different for other init
 }
 
-void	ft_error(void)
+// I will send args from argv[] parsed or not and check if their ok.
+// Checks if number, dupes, int MIN/MAX.
+int	is_arg_valid(int *arg)
 {
-	write(1, "Error\n", 6);
-	exit (1);
-}
-
-int	check_if_sorted(t_stack *stack_a)
-{
-	int	*i;
+	int i;
 	
-	i = stack_a->number;
-	while(stack_a)
-	{
-		if (i > stack_a->number)
-			return (0);
-		i = stack_a->number;
-		stack_a = stack_a->next;
-	}
-	return (1);
+	i = 0;
+	if (arg[i] == '-' || arg[i] == '+')
+		i++;
+	if (!ft_isdigit(arg[i++]))
+		return (1);
+	i = 0;
+//	if ()
+
+
+	return (0);
 }
 
-t_stack	ft_sort(t_stack stack_a)
-{
-	return (stack_a);
-}
+// void	check_duplicates(t_stack **a);
+
+// void	init_stack_a(t_stack **stack_a, char **argv)
+// {	
+// 	int	i;
+// 	int	*num_ptr;
+
+// 	i = 1;
+// 	while (argv[i] != NULL)
+// 	{
+// 		num_ptr = malloc(sizeof(int));
+// 		if (!num_ptr)
+// 		{
+// 			free(num_ptr);
+// 			ft_error();
+// 		}
+// 		*num_ptr = atoi(argv[i]);
+// 		ft_lstadd_backdouble(stack_a, ft_lstnew_double(num_ptr));
+// 		i++;
+// 	}
+// }
+
+
+// int	check_if_sorted(t_stack *stack_a)
+// {
+// 	int	*i;
+	
+// 	i = stack_a->number;
+// 	while(stack_a)
+// 	{
+// 		if (i > stack_a->number)
+// 			return (0);
+// 		i = stack_a->number;
+// 		stack_a = stack_a->next;
+// 	}
+// 	return (1);
+// }
+
+
+
+// String valid ft?? Check for errors ft??
+
+// Declare structs a and b // DONE
+// Argument count check and empty second argument check // DONE
+
+// if string use split. How to differ one # and string >> I dont have to. //
+
+// With all errors I have to free stack if error occurs.
+
+// Check overflow
+
+// Check duplicates
+
+// Check syntax errors such as "123", Only + - is allowed.
+
+// Check if sorted -> check for 2 -> check for 3 -> above 3, implement Turk.
+
+// Initialize and check OR check one by one and then pass???
+
+// ft to handle errors and freeing, operations (11x), stack len, last node, min and max
+
+// 
