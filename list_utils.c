@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:43:05 by tbruha            #+#    #+#             */
-/*   Updated: 2024/10/28 20:06:50 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/10/29 18:02:27 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_stack	*ft_dlstnew(void *content)
 	return (new_node);
 }
 
+// It returns the number of nodes in the stack.
 int	ft_dlstsize(t_stack *lst)
 {
 	int	count;

@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/10/28 20:08:57 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/10/29 18:45:35 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,15 @@ typedef struct s_stack
 	struct s_stack	*previous;
 } t_stack;
 
-// FT PROTOTYPES
+// FT PROTOTYPES for push_swap
 
 void	ft_error(void);
 void	init_parse_stack(t_stack **a, char **argv);
-int		is_arg_valid(int *arg);
+void	init_stack(t_stack **a, char **argv);
+int		is_arg_valid(char *arg);
+long	ft_atol(const char *nptr);
+void	check_duplicates(t_stack *lst);
+int		check_if_sorted(t_stack *a);
 
 // D LST FTs
 
@@ -52,10 +56,10 @@ t_stack	*ft_dlstlast(t_stack *lst);
 t_stack	*ft_dlstnew(void *content);
 int		ft_dlstsize(t_stack *lst);
 
-// int		check_if_sorted(t_stack *stack_a);
 // t_stack	ft_sort(t_stack stack_a);
-// int		check_dupes(char **argv);
-// int		check_digit(char **argv);
+
+// OPERATIONS
+
 // void	ft_sa(t_stack **stack_a, int print);
 // void	ft_sb(t_stack **stack_b, int print);
 // void	ft_ss(t_stack **stack_a, t_stack **stack_b, int print);
