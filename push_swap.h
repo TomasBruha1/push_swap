@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/01 12:26:45 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/01 16:19:07 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ void	ft_sb(t_stack **b, int print);
 void	ft_ss(t_stack **a, t_stack **b, int print);
 void	ft_pb(t_stack **a, t_stack **b, int print);
 void	ft_pa(t_stack **a, t_stack **b, int print);
+void	ft_ra(t_stack **a, int print);
+void	ft_rb(t_stack **b, int print);
+void	ft_rr(t_stack **a, t_stack **b, int print);
 
 // t_stack	ft_sort(t_stack stack_a);
 
