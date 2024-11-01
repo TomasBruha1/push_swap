@@ -21,9 +21,20 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		init_stack(&a, argv);
 	check_duplicates(a);
-//	ft_sa(&a,1); // Start of operations for testing.
+	ft_sa(&a,1); // Start of operations for testing.
 	ft_pb(&a, &b, 1);
-	// ft_pa(&a, &b, 1);
+	ft_pb(&a, &b, 1);
+	ft_pb(&a, &b, 1);
+	ft_pb(&a, &b, 1);
+	ft_pa(&a, &b, 1);
+	ft_pa(&a, &b, 1);
+	ft_pa(&a, &b, 1);
+	ft_pa(&a, &b, 1);
+	ft_sa(&a, 1);
+	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
+		printf("SORTED\n");
+	else
+		printf("NOT SORTED\n");
 	while (a != NULL)
 	{
 		printf("stack a -> node %d: %d\n", i, a->number);
@@ -31,12 +42,13 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	write(1, "\n", 1);
-	printf("stack b -> node 1: %d\n", b->number);
-	write(1, "test outside\n\n", 14);
-	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
-		printf("SORTED\n");
-	else
-		printf("NOT SORTED\n");
+	i = 0;
+	while (b != NULL)
+	{
+		printf("stack b -> node 1: %d\n", b->number);
+		b = b->next;
+		i++;
+	}
 	printf("end\n");
 	// free stack a (also b)
 	return (0);	
@@ -124,10 +136,10 @@ int	is_arg_valid(char *arg)
 // Check syntax errors such as "123", Only + - is allowed. // DONE
 // Initialize and check OR check one by one and then pass??? // DONE
 
-// Check if sorted -> check for 2 -> check for 3 -> above 3, implement Turk.
+// operations (6x left)
+// Check if sorted DONE -> check for 2 -> check for 3 -> above 3, implement Turk.
 
+
+// helper functions 1/2 -> stack len, last node
+// helper functions 2/2 -> min and max node
 // With all errors I have to free stack if error occurs.
-
-// operations (11x), stack len, last node, min and max
-
-// 

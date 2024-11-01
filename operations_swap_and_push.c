@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:08:14 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/01 13:07:25 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/01 16:05:04 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ void	ft_pa(t_stack **a, t_stack **b, int print)
 	if (!*b)
 		return ;
 	temp = (*b)->next;
-	(*b)->next = (*a);
-	(*a) = (*b);
-	(*b) = temp;
+	(*b)->next = *a;
+	*a = *b;
+	*b = temp;
 	if (print == 1)
 		write(1, "pa\n", 3);
 }
