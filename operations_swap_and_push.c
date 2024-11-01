@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:08:14 by tbruha            #+#    #+#             */
-/*   Updated: 2024/10/29 18:40:48 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/01 13:07:25 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_sa(t_stack **a, int print)
 {
 	t_stack	*temp;
 
-	if (!*a || ft_dlstsize(*a) < 2)
+	if (!*a || ft_dlstsize(*a) < 2) // second check is diff than sb, but same.
 		return ;
 	temp = *a;
 	(*a) = (*a)->next;
@@ -32,7 +32,7 @@ void	ft_sb(t_stack **b, int print)
 {
 	t_stack	*temp;
 
-	if (!*b || !(*b)->next)
+	if (!*b || !(*b)->next) // second check is diff than sa, but same.
 		return ;
 	temp = (*b);
 	(*b) = (*b)->next;
@@ -42,12 +42,23 @@ void	ft_sb(t_stack **b, int print)
 		write(1, "sb\n", 3);
 }
 
-// Need to rewrite this because I need to print ss and not sa+sb.
-// WILL COME BACK TO THIS LATER.
+// It does sa and sb at the same time for cost of one move and prints ss.
 void	ft_ss(t_stack **a, t_stack **b, int print)
 {
-	ft_sa(a, print);
-	ft_sb(b, print);
+	t_stack	*temp;
+
+	if (!*a ||!*b || !(*a)->next || !(*b)->next)
+		return ;	
+	temp = *a;
+	(*a) = (*a)->next;
+	temp->next = (*a)->next;
+	(*a)->next = temp;
+	temp = *b;
+	(*b) = (*b)->next;
+	temp->next = (*b)->next;
+	(*b)->next = temp;
+	if (print == 1)
+		write(1, "ss\n", 3);		
 }
 
 // Takes the top element of a and pushes it to top of b.
@@ -57,14 +68,19 @@ void	ft_pb(t_stack **a, t_stack **b, int print)
 
 	if (!*a)
 		return ;
+	
 	temp = (*a)->next;
-	(*a)->next = (*b);
-	(*b) = (*a);
-	(*a) = temp;
+	(*a)->next = *b;
+	*b = *a;
+	*a = temp;
+	// temp = (*a)->next;
+	// (*a)->next = (*b);
+	// (*b) = (*a);
+	// (*a) = temp;
 	if (print == 1)
-		write(1, "pa\n", 3);
+		write(1, "pb\n", 3);
 }
-
+	
 // Takes the top element of b and pushes it to top of a.
 void	ft_pa(t_stack **a, t_stack **b, int print)
 {

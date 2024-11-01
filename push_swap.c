@@ -21,16 +21,22 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		init_stack(&a, argv);
 	check_duplicates(a);
-	if (check_if_sorted(a))
-		printf("SORTED\n");
-	else
-		printf("NOT SORTED\n");
+//	ft_sa(&a,1); // Start of operations for testing.
+	ft_pb(&a, &b, 1);
+	// ft_pa(&a, &b, 1);
 	while (a != NULL)
 	{
-		printf("node %d: %d\n", i, a->number);
+		printf("stack a -> node %d: %d\n", i, a->number);
 		a = a->next;
 		i++;
 	}
+	write(1, "\n", 1);
+	printf("stack b -> node 1: %d\n", b->number);
+	write(1, "test outside\n\n", 14);
+	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
+		printf("SORTED\n");
+	else
+		printf("NOT SORTED\n");
 	printf("end\n");
 	// free stack a (also b)
 	return (0);	
@@ -108,7 +114,6 @@ int	is_arg_valid(char *arg)
 		return (1);
 	return (0);
 }
-
 
 // String valid ft?? Check for errors ft?? // DONE
 // Declare structs a and b // DONE

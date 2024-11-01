@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/10/29 18:45:35 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/01 12:26:45 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ void	ft_dlstadd_back(t_stack **lst, t_stack *node);
 t_stack	*ft_dlstlast(t_stack *lst);
 t_stack	*ft_dlstnew(void *content);
 int		ft_dlstsize(t_stack *lst);
+
+// operations sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
+
+void	ft_sa(t_stack **a, int print);
+void	ft_sb(t_stack **b, int print);
+void	ft_ss(t_stack **a, t_stack **b, int print);
+void	ft_pb(t_stack **a, t_stack **b, int print);
+void	ft_pa(t_stack **a, t_stack **b, int print);
 
 // t_stack	ft_sort(t_stack stack_a);
 
