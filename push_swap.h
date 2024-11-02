@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/01 16:19:07 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/02 12:04:00 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_stack
 	bool	above_median;
 	struct s_stack	*target_node;
 	struct s_stack	*next;
-	struct s_stack	*previous;
+	struct s_stack	*prev;
 } t_stack;
 
 // FT PROTOTYPES for push_swap
@@ -56,7 +56,7 @@ t_stack	*ft_dlstlast(t_stack *lst);
 t_stack	*ft_dlstnew(void *content);
 int		ft_dlstsize(t_stack *lst);
 
-// operations sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
+// OPERATIONS sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 
 void	ft_sa(t_stack **a, int print);
 void	ft_sb(t_stack **b, int print);
@@ -66,18 +66,9 @@ void	ft_pa(t_stack **a, t_stack **b, int print);
 void	ft_ra(t_stack **a, int print);
 void	ft_rb(t_stack **b, int print);
 void	ft_rr(t_stack **a, t_stack **b, int print);
+void	ft_rra(t_stack **a, int print);
+void	ft_rrb(t_stack **b, int print);
 
 // t_stack	ft_sort(t_stack stack_a);
-
-// OPERATIONS
-
-// void	ft_sa(t_stack **stack_a, int print);
-// void	ft_sb(t_stack **stack_b, int print);
-// void	ft_ss(t_stack **stack_a, t_stack **stack_b, int print);
-// void	ft_pb(t_stack **stack_a, t_stack **stack_b, int print);
-// void	ft_pa(t_stack **stack_a, t_stack **stack_b, int print);
-// void	ft_ra(t_stack **stack_a, int print);
-// void	ft_rra(t_stack **stack_a, int print);
-// void	ft_rrb(t_stack **stack_b, int print);
 
 #endif
