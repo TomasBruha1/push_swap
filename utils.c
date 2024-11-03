@@ -6,12 +6,13 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:31:42 by tbruha            #+#    #+#             */
-/*   Updated: 2024/10/29 18:27:09 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/03 12:32:20 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Converting sent argument to long so I can check if the number is within INT.
 long	ft_atol(const char *nptr)
 {
 	long		res;
@@ -58,12 +59,19 @@ void	check_duplicates(t_stack *lst)
 	}
 }
 
-int	check_if_sorted(t_stack *a) // 1 2 3 4
+// I'm checking if the stack is sorted and if not it will go to ft sort.
+// I also have check for empty stack a to prevent input such as: " ".
+// I might need to move the check for " ". It causes problems.
+int	check_if_sorted(t_stack *a)
 {
-	int	i;
+	int		i;
 	
+	if (!a)
+	 	return (0); // These two lines will be deleted after testing.
+	if (!a)	
+		ft_error(); // This checks for empty " ".
 	i = a->number;
-	while(a)
+	while(a) // PROBLEM IS HERE
 	{
 		if (i > a->number)
 			return (0);

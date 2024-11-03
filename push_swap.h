@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/03 13:03:26 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/03 14:09:51 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 typedef struct s_stack
 {
 	int		number;
-	int		index; // Do I need it?
+	int		index; // Do I need it? Probably I do.
 	int		push_price;
 	bool	cheapest;
 	bool	above_median;
@@ -56,6 +56,12 @@ t_stack	*ft_dlstlast(t_stack *lst);
 t_stack	*ft_dlstnew(void *content);
 int		ft_dlstsize(t_stack *lst);
 
+// SORTING FTs
+
+void	what2sort(t_stack **a);
+void	sort_3(t_stack **a);
+void	sort_big(t_stack **a);
+
 // OPERATIONS sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 
 void	ft_sa(t_stack **a, int print);
@@ -71,7 +77,5 @@ void	ft_rrb(t_stack **b, int print);
 void	ft_rrr(t_stack **a, t_stack **b, int print);
 void	fake_rra(t_stack **a);
 void	fake_rrb(t_stack **b);
-
-// t_stack	ft_sort(t_stack stack_a);
 
 #endif

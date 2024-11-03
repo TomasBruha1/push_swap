@@ -1,7 +1,8 @@
 #include "push_swap.h"
 
 // STATUS UPDATE: 
-// Then do tree mapping for sort and do sort 2, 3 and more than 3.
+// To do sort_3 write find_min & find_max. Am I in need of value or index now??
+// Do sort 3 and more than 3.
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -10,11 +11,9 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack *b; // Maybe needed later. Let's leave it here for now.
 	int		i;
 
 	a = NULL;
-	b = NULL;
 	i = 1;
 	if (argc < 2 || argv[1][0] == '\0')
 		ft_error();
@@ -24,21 +23,14 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		init_stack(&a, argv);
 	check_duplicates(a);
-	ft_pb(&a, &b, 1); // Start of operations for testing.
-	ft_pb(&a, &b, 1);
-	// ft_pb(&a, &b, 1);
-	// ft_rra(&a, 1);
-	// ft_rrb(&b, 1);
-	ft_rrr(&a, &b, 1);
 	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
 		printf("a is SORTED\n");
 	else
+	{
 		printf("a is NOT SORTED\n");
+		what2sort(&a);
+	}	
 	write(1, "\n", 1);
-	if (check_if_sorted(b)) // right now just printing SORTED/NOT SORTED.
-		printf("b is SORTED\n");
-	else
-		printf("b is NOT SORTED\n");
 	while (a != NULL)
 	{
 		printf("stack a -> node %d: %d\n", i, a->number);
@@ -46,15 +38,8 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	write(1, "\n", 1);
-	i = 0;
-	while (b != NULL)
-	{
-		printf("stack b -> node 1: %d\n", b->number);
-		b = b->next;
-		i++;
-	}
 	printf("end\n");
-	// free stack a (also b)
+	// free stack a
 	return (0);	
 }
 
