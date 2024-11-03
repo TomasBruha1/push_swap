@@ -1,7 +1,7 @@
 #include "push_swap.h"
 
 // STATUS UPDATE: 
-// To do sort_3 write find_min & find_max. Am I in need of value or index now??
+// Check new functions: find_min, find_max & assign_index.
 // Do sort 3 and more than 3.
 
 // I check number of arguments, if there is at least one we move on to init.

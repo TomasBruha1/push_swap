@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:43:05 by tbruha            #+#    #+#             */
-/*   Updated: 2024/10/29 18:02:27 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/03 21:09:40 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	ft_dlstadd_back(t_stack **lst, t_stack *node)
 	{
 		(*lst) = node;
 		(*lst)->next = NULL;
-		(*lst)->previous = NULL;
+		(*lst)->prev = NULL;
 	}
 	else
 	{
 		last = ft_dlstlast(*lst);
 		last->next = node;
-		node->previous = last;
+		node->prev = last;
 		node->next = NULL;
 	}
 }
@@ -57,8 +57,13 @@ t_stack	*ft_dlstnew(void *content)
 	if (!new_node)
 		return (NULL);
 	new_node->number = *(int *)content;
-	new_node->previous = NULL;
+	new_node->index = -1;
+	new_node->prev = NULL;
 	new_node->next = NULL;
+	new_node->cheapest = false;
+	new_node->above_median = false;
+	new_node->push_price = INT_MAX;
+	new_node->target_node = NULL;
 	return (new_node);
 }
 
@@ -74,4 +79,35 @@ int	ft_dlstsize(t_stack *lst)
 		count++;
 	}
 	return (count);
+}
+
+// This function will give each node in the stack an index value.
+void	ft_dlst_assign_index(t_stack **lst)
+{
+	t_stack	*current;
+	t_stack	*min_node;
+	int		index;
+	int		min_number;
+	
+	if (!*lst)
+		return (NULL);
+	index = 0;
+	while (1)
+	{
+		current = *lst;
+		min_node = NULL;
+		min_number = INT_MAX;
+		while (current)
+		{
+			if (current->number < min_number && current->index == -1)
+			{
+				min_number = current->number;
+				min_node = current;
+			}
+			current = current->next;
+		}
+		if (min_node = NULL)
+			break ;
+		min_node->index = index++;
+	}
 }
