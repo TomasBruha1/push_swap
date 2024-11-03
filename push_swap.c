@@ -1,5 +1,8 @@
 #include "push_swap.h"
 
+// STATUS UPDATE: 
+// Then do tree mapping for sort and do sort 2, 3 and more than 3.
+
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
 // I check for duplicates and then if it is sorted. If not let's sort.
@@ -21,14 +24,12 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		init_stack(&a, argv);
 	check_duplicates(a);
-	// ft_pb(&a, &b, 1); // Start of operations for testing.
+	ft_pb(&a, &b, 1); // Start of operations for testing.
+	ft_pb(&a, &b, 1);
 	// ft_pb(&a, &b, 1);
-	// ft_pb(&a, &b, 1);
+	// ft_rra(&a, 1);
 	// ft_rrb(&b, 1);
-	// ft_rrb(&b, 1);
-	//ft_sb(&b, 1);
-	//ft_rrb(&a, 1);
-	printf("test");
+	ft_rrr(&a, &b, 1);
 	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
 		printf("a is SORTED\n");
 	else
@@ -138,11 +139,14 @@ int	is_arg_valid(char *arg)
 // Check duplicates // DONE
 // Check syntax errors such as "123", Only + - is allowed. // DONE
 // Initialize and check OR check one by one and then pass??? // DONE
+// operations 11x // DONE
+// Check if sorted // DONE
 
-// operations (2x left)
-// Check if sorted DONE -> check for 2 -> check for 3 -> above 3, implement Turk.
+// NOW
+// check for 2 and sort
 
-
+// check for 3 and sort
+// check above 3, implement Turk and sort
 // helper functions 1/2 -> stack len, last node
 // helper functions 2/2 -> min and max node
 // With all errors I have to free stack if error occurs.
