@@ -1,8 +1,11 @@
 #include "push_swap.h"
 
 // STATUS UPDATE: 
-// Check new functions: find_min, find_max & assign_index.
-// Do sort 3 and more than 3.
+// Do sort 3 and more than 3. Start with 4 and 5 so I push and then set up the push back.
+// NOW: algorithm how to return from b and function how to add "target node".
+// Find where to push from b to a.
+// Move to 5 elements.
+// Move to 6 (if that works I'm pretty much done).
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -33,8 +36,9 @@ int	main(int argc, char **argv)
 	}
 	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
 		printf("a is SORTED now\n\n");
-	while (a != NULL)
+	while (a != NULL) // now is NULL, but let's leave it
 	{
+		write(1, "aaaaa\n", 6);
 		printf("Node %d value: %d     with index: %d\n", i, a->number, a->index);
 		a = a->next;
 		i++;
@@ -129,13 +133,17 @@ int	is_arg_valid(char *arg)
 // Initialize and check OR check one by one and then pass??? // DONE
 // operations 11x // DONE
 // Check if sorted // DONE
+// check for 2 and sort // DONE
+// check for 3 and sort // DONE
+// helper functions 1/2 -> stack len, last node // DONE
+// helper functions 2/2 -> min and max node // DONE
 
 // NOW
-// check for 2 and sort
-
-// check for 3 and sort
 // check above 3, implement Turk and sort
-// helper functions 1/2 -> stack len, last node
-// helper functions 2/2 -> min and max node
+
+// Function how to calculate push_price.
+// ft if cheapest
+// ft if above median > count / 2 right?
+// rules for target node a to b then b to a.
 // With all errors I have to free stack if error occurs.
 // input problem with "-" // What about minus zero??	
