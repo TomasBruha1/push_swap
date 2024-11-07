@@ -27,13 +27,15 @@ int	main(int argc, char **argv)
 		printf("a is SORTED\n");
 	else
 	{
-		printf("a is NOT SORTED\n");
+		printf("inicialy \"a\" was NOT SORTED\n\n");
 		what2sort(&a);
-	}	
-	write(1, "\n", 1);
+		write(1, "\n", 1);
+	}
+	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
+		printf("a is SORTED now\n\n");
 	while (a != NULL)
 	{
-		printf("stack a -> node %d: %d\n", i, a->number);
+		printf("Node %d value: %d     with index: %d\n", i, a->number, a->index);
 		a = a->next;
 		i++;
 	}
@@ -103,6 +105,7 @@ int	is_arg_valid(char *arg)
 	int i;
 
 	i = 0;
+	// Fix the solo "minus" sign issue here.
 	if (arg[i] == '-' || arg[i] == '+')
 		i++;
 	while (arg[i])
@@ -135,3 +138,4 @@ int	is_arg_valid(char *arg)
 // helper functions 1/2 -> stack len, last node
 // helper functions 2/2 -> min and max node
 // With all errors I have to free stack if error occurs.
+// input problem with "-" // What about minus zero??	

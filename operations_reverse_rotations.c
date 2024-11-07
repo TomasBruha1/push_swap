@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:35:37 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/03 13:01:39 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/03 13:34:11 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_rrb(t_stack **b, int print)
 		write(1, "rrb\n", 4);
 }
 
+// It calls fake rra and rrb and do the moves then prints rrr.
 void	ft_rrr(t_stack **a, t_stack **b, int print)
 {
 	fake_rra(a);
@@ -59,6 +60,7 @@ void	ft_rrr(t_stack **a, t_stack **b, int print)
 		write(1, "rrr\n", 4);
 }
 
+// Reverse rotate all nodes in a aka minus one. Doesn't print anything.
 void	fake_rra(t_stack **a)
 {
 	t_stack	*temp;
@@ -75,6 +77,7 @@ void	fake_rra(t_stack **a)
 	temp2->next = NULL;
 }
 
+// Reverse rotates all nodes in b aka minus one. Doesn't print anything.
 void	fake_rrb(t_stack **b)
 {
 	t_stack	*temp;
@@ -90,6 +93,3 @@ void	fake_rrb(t_stack **b)
 	*b = temp;
 	temp2->next = NULL;
 }
-
-// rrr - Does rra and rrb at the same time.
-// void	ft_rrr(t_stack **a, t_stack **b, int print)

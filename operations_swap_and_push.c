@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:08:14 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/01 16:05:04 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/02 12:34:02 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,14 @@ void	ft_pb(t_stack **a, t_stack **b, int print)
 
 	if (!*a)
 		return ;
-	
-	temp = (*a)->next;
-	(*a)->next = *b;
-	*b = *a;
-	*a = temp;
 	// temp = (*a)->next;
-	// (*a)->next = (*b);
-	// (*b) = (*a);
-	// (*a) = temp;
+	// (*a)->next = *b;
+	// *b = *a;
+	// *a = temp;
+	temp = *a;
+	*a = (*a)->next;
+	temp->next = *b;
+	*b = temp;
 	if (print == 1)
 		write(1, "pb\n", 3);
 }

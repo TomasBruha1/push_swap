@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:43:05 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/03 21:09:40 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/07 18:54:43 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_dlst_assign_index(t_stack **lst)
 	int		min_number;
 	
 	if (!*lst)
-		return (NULL);
+		return ;
 	index = 0;
 	while (1)
 	{
@@ -106,7 +106,7 @@ void	ft_dlst_assign_index(t_stack **lst)
 			}
 			current = current->next;
 		}
-		if (min_node = NULL)
+		if (min_node == NULL)
 			break ;
 		min_node->index = index++;
 	}

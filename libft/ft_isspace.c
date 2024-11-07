@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlastdouble.c                                 :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbruha <tbruha@student.42Prague.com>       +#+  +:+       +#+        */
+/*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 11:28:27 by tbruha            #+#    #+#             */
-/*   Updated: 2024/09/24 11:28:28 by tbruha           ###   ########.fr       */
+/*   Created: 2024/10/29 15:53:52 by tbruha            #+#    #+#             */
+/*   Updated: 2024/10/29 15:58:26 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack	*ft_lstlastdouble(t_stack *lst)
+int	ft_isspace(int c)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-	{
-		lst = lst->next;
-	}
-	return (lst);
+	if (c == 32 || (c >=9 && c <= 13))
+		return (1);
+	return (0);
 }

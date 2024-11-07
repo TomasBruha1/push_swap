@@ -25,6 +25,7 @@ static char	*alloc_substr_cpy(const char *s, char c);
 	return (0);
 } */
 
+// It takes string and separates it into multiple strings with sep char c.
 char	**ft_split(char const *s, char c)
 {
 	size_t		len;
@@ -53,6 +54,7 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
+// It counts the number of final strings.
 static int	count_str(char const *s, char c)
 {
 	size_t	i;
@@ -72,6 +74,7 @@ static int	count_str(char const *s, char c)
 	return (count);
 }
 
+// It allocates memory and calls strlcpy to copy string and returns it.
 static char	*alloc_substr_cpy(const char *s, char c)
 {
 	size_t	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbruha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:44:18 by tbruha            #+#    #+#             */
-/*   Updated: 2024/06/10 16:44:21 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/10/29 15:59:04 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
-typedef struct s_stack
-{
-	void			*content;
-	struct s_stack	*next;
-	struct s_stack	*previous;
-}					t_stack;
 
 // FT PROTOTYPES by LIBRARY
 
@@ -94,10 +87,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // ** // MY FTs
 
-// ** // Double linked list fts
+int		ft_isspace(int c);
 
-t_stack	*ft_lstnew_double(void *content);
-void	ft_lstadd_backdouble(t_stack **lst, t_stack *new);
-t_stack	*ft_lstlastdouble(t_stack *lst);
+// ** // push_swap lists
 
 #endif

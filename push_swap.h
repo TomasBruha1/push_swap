@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/03 20:33:35 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/07 19:04:21 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ t_stack	*ft_dlstlast(t_stack *lst);
 t_stack	*ft_dlstnew(void *content);
 int		ft_dlstsize(t_stack *lst);
 void	ft_dlst_assign_index(t_stack **lst);
+t_stack	*find_min_index(t_stack *lst);
+t_stack	*find_max_index(t_stack *lst);
 
 // SORTING FTs
 

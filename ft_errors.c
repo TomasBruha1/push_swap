@@ -6,12 +6,13 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:48:48 by tbruha            #+#    #+#             */
-/*   Updated: 2024/10/27 16:49:17 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/10/29 17:07:26 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Writes Error and exits.
 void	ft_error(void)
 {
 	write(1, "Error\n", 6);

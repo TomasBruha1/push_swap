@@ -6,40 +6,40 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 14:39:33 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/03 20:13:13 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/07 19:03:54 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*find_min_value(t_stack *a)
+t_stack	*find_min_index(t_stack *lst)
 {
-	t_stack	*min;
+	t_stack	*min_node;
 
-	min = a;
-	if (!a)
+	min_node = lst;
+	if (!lst)
 		return (NULL);
-	while (a)
+	while (lst)
 	{
-		if (a->index < min->index)
-			min = a;
-		a = a->next;
+		if (lst->index < min_node->index)
+			min_node = lst;
+		lst = lst->next;
 	}
-	return (min);
+	return (min_node);
 }
 
-t_stack	*find_max_value(t_stack *a)
+t_stack	*find_max_index(t_stack *lst)
 {
-	t_stack	*max;
+	t_stack	*max_node;
 
-	max = a;
-	if (!a)
+	max_node = lst;
+	if (!lst)
 		return (NULL);
-	while (a)
+	while (lst)
 	{
-		if (a->index > max->index)
-			max = a;
-		a = a->next;
+		if (lst->index > max_node->index)
+			max_node = lst;
+		lst = lst->next;
 	}
-	return (max);
+	return (max_node);
 }
