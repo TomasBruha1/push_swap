@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/08 15:08:34 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/08 22:08:59 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	ft_dlst_assign_index(t_stack **lst);
 t_stack	*find_min_index(t_stack *lst);
 t_stack	*find_max_index(t_stack *lst);
 void	assign_target_node_in_b(t_stack **a, t_stack **b);
+t_stack	*find_max_number(t_stack *lst);
+void	reset_indexes(t_stack **lst);
 
 // SORTING FTs
 
@@ -82,5 +84,9 @@ void	ft_rrb(t_stack **b, int print);
 void	ft_rrr(t_stack **a, t_stack **b, int print);
 void	fake_rra(t_stack **a);
 void	fake_rrb(t_stack **b);
+
+// HELPER DELETE LATER
+
+void	print_stack_stuff(t_stack *stack, char c);
 
 #endif

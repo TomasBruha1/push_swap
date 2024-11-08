@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-// STATUS UPDATE: 
-// Do sort 3 and more than 3. Start with 4 and 5 so I push and then set up the push back.
-// NOW: algorithm how to return from b and function how to add "target node".
+// STATUS UPDATE:
+// RIGHT NOW I NEED check assigning target nodes.
+// Do sort more than 3. Start with 4 and 5 so I push and then set up the push back.
 // Find where to push from b to a.
 // Move to 5 elements.
 // Move to 6 (if that works I'm pretty much done).
@@ -36,13 +36,6 @@ int	main(int argc, char **argv)
 	}
 	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
 		printf("a is SORTED now\n\n");
-	while (a != NULL) // now is NULL, but let's leave it
-	{
-		printf("Node %d value: %d     with index: %d\n", i, a->number, a->index);
-		a = a->next;
-		i++;
-	}
-	write(1, "\n", 1);
 	printf("end\n");
 	// free stack a
 	return (0);	
@@ -122,6 +115,22 @@ int	is_arg_valid(char *arg)
 	return (0);
 }
 
+void	print_stack_stuff(t_stack *stack, char c)
+{
+	int	i;
+	
+	i = 1;
+	write(1, "STACK\n", 6);
+	while (stack != NULL)
+	{
+		printf("Stack %c node %d   value: %d   with index: %d\n"
+		, c, i, stack->number, stack->index);
+		stack = stack->next;
+		i++;
+	}
+	write(1, "\n", 1);
+}
+
 // String valid ft?? Check for errors ft?? // DONE
 // Declare structs a and b // DONE
 // Argument count check and empty second argument check // DONE
@@ -136,6 +145,7 @@ int	is_arg_valid(char *arg)
 // check for 3 and sort // DONE
 // helper functions 1/2 -> stack len, last node // DONE
 // helper functions 2/2 -> min and max node // DONE
+// rules for target node a to b then b to a. // DONE
 
 // NOW
 // check above 3, implement Turk and sort
@@ -143,6 +153,5 @@ int	is_arg_valid(char *arg)
 // Function how to calculate push_price.
 // ft if cheapest
 // ft if above median > count / 2 right?
-// rules for target node a to b then b to a.
 // With all errors I have to free stack if error occurs.
 // input problem with "-" // What about minus zero??	

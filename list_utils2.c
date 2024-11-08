@@ -6,12 +6,13 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 14:39:33 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/07 19:03:54 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/08 22:35:24 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Here I look for and return node with lowest index.
 t_stack	*find_min_index(t_stack *lst)
 {
 	t_stack	*min_node;
@@ -28,6 +29,7 @@ t_stack	*find_min_index(t_stack *lst)
 	return (min_node);
 }
 
+// Here I look for and return node with highest index.
 t_stack	*find_max_index(t_stack *lst)
 {
 	t_stack	*max_node;
@@ -42,4 +44,32 @@ t_stack	*find_max_index(t_stack *lst)
 		lst = lst->next;
 	}
 	return (max_node);
+}
+
+// Here I look for and return node with highest number.
+t_stack	*find_max_number(t_stack *lst)
+{
+	t_stack	*max_number;
+
+	max_number = lst;
+	while (lst)
+	{
+		if (lst->number > max_number->number)
+			max_number = lst;
+		lst = lst->next;
+	}
+	return (max_number);
+}
+
+// This function resets indexes for all nodes in the stack to -1.
+void	reset_indexes(t_stack **lst)
+{
+	t_stack	*temp;
+
+	temp = *lst;
+	while (temp)
+	{
+		temp->index = -1;
+		temp = temp->next;
+	}
 }

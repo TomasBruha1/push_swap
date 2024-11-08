@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:43:05 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/07 18:54:43 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/08 22:35:38 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	ft_dlst_assign_index(t_stack **lst)
 	
 	if (!*lst)
 		return ;
+	reset_indexes(lst);
 	index = 0;
 	while (1)
 	{

@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/08 16:01:26 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/08 23:29:37 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	what2sort(t_stack **a)
 	else if(ft_dlstsize(*a) == 3)
 		sort_3(a);
 	else
-	{
-		printf("**a = value: %d\n", (*a)->number);
 		sort_big(a);
-	}
 }
 
 // Hard coded for exactly 3 elements.
@@ -47,12 +44,7 @@ void	sort_3(t_stack **a)
 	}
 }
 
-// 4 elem back to a from b.
-// 
-// 
-// 
-
-// If I have over 3 elements I will
+// If I have over 3 elements I will start moving them to b one by one until I have 3 left in a.
 void	sort_big(t_stack **a)
 {
 	t_stack	*b;
@@ -66,63 +58,73 @@ void	sort_big(t_stack **a)
 	while (!check_if_sorted(*a) && ft_dlstsize(*a) > 3)
 	{
 		push_node_to_b(a, &b);
-		
-		// push_node_to_b
 		// ft where I assign index > target node > above_median or not > push_price > cheapest
+		// push_node_to_b
 		// don't forget to reset bool for cheapest.
 		// OK do one function from the list above to start with. NOW.
+	//	ft_error();
 	}
 	sort_3(a);
-	// while nodes in b keep pushing to a....
-	// ft push_node_to_a 
+	// DO LATER while nodes in b keep pushing to a....
+	// DO LATER ft push_node_to_a 
 	
-	// free b
-	while ((*a) != NULL)
-	{
-		printf("Stack a node %d   value: %d   with index: %d\n", i, (*a)->number, (*a)->index);
-		(*a) = (*a)->next;
-		i++;
-	}
-	i = 1;
-	write(1, "\n", 2);
-	while (b != NULL)
-	{
-		printf("Stack b node %d   value: %d   with index: %d\n", i, b->number, b->index);
-		b = b->next;
-		i++;
-	}
+	// DO LATER free b
 }
 
 // Set of functions to assign index, target, price, cheapest and above_median to node.
 // Afterwards I pick the cheapest node and push it to b. Reset bools before or after??
 void	push_node_to_b(t_stack **a, t_stack **b)
 {
-	// Where to implement reset function for nodes so my assigning functions work.
+	ft_pb(a, b, 1);
+	print_stack_stuff(*a, 'a');
+	print_stack_stuff(*b, 'b');
 	ft_dlst_assign_index(a);
 	ft_dlst_assign_index(b);
+	print_stack_stuff(*a, 'a');
+	print_stack_stuff(*b, 'b');
+	ft_pb(a, b, 1);
+	ft_pb(a, b, 1);
+	ft_pb(a, b, 1);
+	ft_pb(a, b, 1);
+	ft_dlst_assign_index(a);
+	ft_dlst_assign_index(b);
+	print_stack_stuff(*a, 'a');
+	print_stack_stuff(*b, 'b');
 	assign_target_node_in_b(a, b);
-	// 
+	print_stack_stuff(*a, 'a');
+	print_stack_stuff(*b, 'b');
+
+	printf("Node 1 = %d and target is %d\n", (*a)->number, (*a)->target_node->number);
+	printf("Node 2 = %d and target is %d\n", (*a)->next->number, (*a)->next->target_node->number);
+	printf("Node 3 = %d and target is %d\n", (*a)->next->next->number, (*a)->next->next->target_node->number);
+	
+	// actually push to b
 }
-
-// Check how to eliminate nodes already with target nodes. Ones that aren't == NULL?
-
+	
 // I NEED NEAREST LOWER OR MAX. I work with values of numbers here.
-
+// Here I assign target nodes in b to nodes in a.
 void	assign_target_node_in_b(t_stack **a, t_stack **b)
 {	
-	t_stack *current_node_a; // only to traverse the list and assign target_node to them
-	t_stack *target_node_b; // node in "b" that I'm looking for
-	t_stack	*temp; // who knows what for, but let's see...
+	t_stack *current; // only to traverse the list and assign target_node to them
+	t_stack *target; // node in "b" that I'm looking for
+	t_stack	*temp; // to traverse "b"
 	
-	temp = *a;
-	current_node_a = *a;
-	while (current_node_a != NULL)
+	current = *a;
+	while (current != NULL)
 	{
-		target_node_b = *b;
-		if ((current_node_a)->number < )
-		
-		current_node_a = target_node_b;
-		current_node_a = current_node_a->next;
+		temp = *b;
+		target = *b; // I need to set it equal to "find_min_number" function I will create.
+		while (temp != NULL)
+		{
+			if (temp->number < current->number && temp->number > target->number) // icky
+				target = temp;
+			temp = temp->next;
+		}
+		if (target->number > current->number)
+			target = find_max_number(*b);
+		current->target_node = target;
+		current = current->next;
 	}
-	
 }
+
+// line 105 // target = *b;
