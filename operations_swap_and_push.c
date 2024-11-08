@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:08:14 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/02 12:34:02 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/08 14:31:46 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,6 @@ void	ft_pb(t_stack **a, t_stack **b, int print)
 
 	if (!*a)
 		return ;
-	// temp = (*a)->next;
-	// (*a)->next = *b;
-	// *b = *a;
-	// *a = temp;
 	temp = *a;
 	*a = (*a)->next;
 	temp->next = *b;

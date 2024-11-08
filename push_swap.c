@@ -38,7 +38,6 @@ int	main(int argc, char **argv)
 		printf("a is SORTED now\n\n");
 	while (a != NULL) // now is NULL, but let's leave it
 	{
-		write(1, "aaaaa\n", 6);
 		printf("Node %d value: %d     with index: %d\n", i, a->number, a->index);
 		a = a->next;
 		i++;
