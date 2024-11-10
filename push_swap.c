@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
 // STATUS UPDATE:
-// RIGHT NOW I NEED check assigning target nodes.
-// Do sort more than 3. Start with 4 and 5 so I push and then set up the push back.
+// RIGHT NOW I NEED: Calculate the push_price > find_cheapest > push cheapest to b.
+// reset values and repeat until 3 elem left in a.
 // Find where to push from b to a.
 // Move to 5 elements.
 // Move to 6 (if that works I'm pretty much done).
@@ -115,17 +115,26 @@ int	is_arg_valid(char *arg)
 	return (0);
 }
 
-void	print_stack_stuff(t_stack *stack, char c)
+void	print_stack_stuff(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 	
 	i = 1;
-	write(1, "STACK\n", 6);
-	while (stack != NULL)
-	{
-		printf("Stack %c node %d   value: %d   with index: %d\n"
-		, c, i, stack->number, stack->index);
-		stack = stack->next;
+	printf("STACK A\n");
+	while (stack_a != NULL)
+	{		
+		printf("Node %d   value: %d   with index: %d   above median: %d\n"
+		, i, stack_a->number, stack_a->index, stack_a->above_median);
+		stack_a = stack_a->next;
+		i++;
+	}
+	write(1, "\n", 1);
+	printf("STACK B\n");
+	while (stack_b != NULL)
+	{		
+		printf("Node %d   value: %d   with index: %d   above median: %d\n"
+		, i, stack_b->number, stack_b->index, stack_b->above_median);
+		stack_b = stack_b->next;
 		i++;
 	}
 	write(1, "\n", 1);
@@ -155,3 +164,4 @@ void	print_stack_stuff(t_stack *stack, char c)
 // ft if above median > count / 2 right?
 // With all errors I have to free stack if error occurs.
 // input problem with "-" // What about minus zero??	
+// POSSIBLE PROBLEM: target nodes, check the option with find_min as written in the function
