@@ -1,11 +1,9 @@
 #include "push_swap.h"
 
 // STATUS UPDATE:
-// RIGHT NOW I NEED: Calculate the push_price > find_cheapest > push cheapest to b.
-// reset values and repeat until 3 elem left in a.
+// RIGHT NOW I NEED: find_cheapest > push cheapest to b.
+// check what needs reset and what can be overwritten. reset values and repeat until 3 elem left in a.
 // Find where to push from b to a.
-// Move to 5 elements.
-// Move to 6 (if that works I'm pretty much done).
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -20,7 +18,6 @@ int	main(int argc, char **argv)
 	i = 1;
 	if (argc < 2 || argv[1][0] == '\0')
 		ft_error();
-	printf("start\n");
 	if (argc == 2)
 		init_parse_stack(&a, argv);
 	if (argc > 2)
@@ -49,7 +46,6 @@ void	init_parse_stack(t_stack **a, char **argv)
 	int		i;
 	int		*arg;
 
-	printf("init parse stack\n");
 	temp = ft_split(argv[1], ' ');
 	i = 0;
 	while (temp[i])
@@ -76,7 +72,6 @@ void	init_stack(t_stack **a, char **argv)
 	int		i;
 	int		*arg;
 
-	printf("init multiple arguments stack\n");
 	i = 1;
 	while (argv[i] != NULL)
 	{
@@ -115,26 +110,43 @@ int	is_arg_valid(char *arg)
 	return (0);
 }
 
-void	print_stack_stuff(t_stack *stack_a, t_stack *stack_b)
+void	print_stack_stuff(t_stack *a, t_stack *b)
 {
 	int	i;
 	
 	i = 1;
 	printf("STACK A\n");
-	while (stack_a != NULL)
+	while (a != NULL)
 	{		
-		printf("Node %d   value: %d   with index: %d   above median: %d\n"
-		, i, stack_a->number, stack_a->index, stack_a->above_median);
-		stack_a = stack_a->next;
+		if (a->target_node != NULL)
+		{
+			printf("Node %d   value: %d   value_index: %d   index: %d   median: %d   target: %d   price: %d\n"
+			, i, a->number, a->value_index, a->index, a->above_median, a->target_node->number, a->push_price);
+		}
+		else
+		{
+			printf("Node %d   value: %d   value_index: %d   index: %d   median: %d   price: %d\n"
+			, i, a->number, a->value_index, a->index, a->above_median, a->push_price);
+		}
+		a = a->next;
 		i++;
 	}
 	write(1, "\n", 1);
 	printf("STACK B\n");
-	while (stack_b != NULL)
+	i = 1;
+	while (b != NULL)
 	{		
-		printf("Node %d   value: %d   with index: %d   above median: %d\n"
-		, i, stack_b->number, stack_b->index, stack_b->above_median);
-		stack_b = stack_b->next;
+		if (b->target_node != NULL)
+		{
+			printf("Node %d   value: %d   value_index: %d   index: %d   median: %d   target: %d   price: %d\n"
+			, i, b->number, b->value_index, b->index, b->above_median, b->target_node->number, b->push_price);
+		}
+		else
+		{
+			printf("Node %d   value: %d   value_index: %d   index: %d   median: %d   price: %d\n"
+			, i, b->number, b->value_index, b->index, b->above_median, b->push_price);
+		}
+		b = b->next;
 		i++;
 	}
 	write(1, "\n", 1);
@@ -155,13 +167,16 @@ void	print_stack_stuff(t_stack *stack_a, t_stack *stack_b)
 // helper functions 1/2 -> stack len, last node // DONE
 // helper functions 2/2 -> min and max node // DONE
 // rules for target node a to b then b to a. // DONE
+// With all errors I have to free stack if error occurs.
+// error must be on stderror aka 2 in write. // DONE
 
 // NOW
-// check above 3, implement Turk and sort
-
+// Fix aka add second index function to make it work.
 // Function how to calculate push_price.
+
+// check above 3, implement Turk and sort
 // ft if cheapest
-// ft if above median > count / 2 right?
-// With all errors I have to free stack if error occurs.
+// ft if above median > count / 2 right? // DONE
 // input problem with "-" // What about minus zero??	
 // POSSIBLE PROBLEM: target nodes, check the option with find_min as written in the function
+// Don't forget that input can start as low as minut MIN_INT.

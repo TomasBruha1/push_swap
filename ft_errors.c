@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:48:48 by tbruha            #+#    #+#             */
-/*   Updated: 2024/10/29 17:07:26 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/11 15:25:02 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 // Writes Error and exits.
 void	ft_error(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit (1);
 }

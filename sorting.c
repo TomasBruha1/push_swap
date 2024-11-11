@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/10 08:47:57 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/11 17:53:18 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ void	what2sort(t_stack **a)
 void	sort_3(t_stack **a)
 {
 	// / maybe add check_if_sorted, let's see...
-	ft_dlst_assign_index(a);
-	if ((*a)->next->next->index == 2)
+	assign_value_index(a);
+	if ((*a)->next->next->value_index == 2)
 		ft_sa(a, 1);
-	else if ((*a)->next->index == 2)
+	else if ((*a)->next->value_index == 2)
 	{
 		ft_rra(a, 1);
-		if ((*a)->index == 1)
+		if ((*a)->value_index == 1)
 			ft_sa(a, 1);
 	}
 	else
 	{
 		ft_ra(a, 1);
-		if ((*a)->index == 1)
+		if ((*a)->value_index == 1)
 			ft_sa(a, 1);
 	}
 }
@@ -75,26 +75,20 @@ void	sort_big(t_stack **a)
 // Afterwards I pick the cheapest node and push it to b. Reset bools before or after??
 void	push_node_to_b(t_stack **a, t_stack **b)
 {
-	print_stack_stuff(*a, *b);
-	ft_dlst_assign_index(a);
-	ft_dlst_assign_index(b);
-	print_stack_stuff(*a, *b);
 	ft_pb(a, b, 1);
 	ft_pb(a, b, 1);
 	ft_pb(a, b, 1);
 	ft_pb(a, b, 1);
-	ft_dlst_assign_index(a);
-	ft_dlst_assign_index(b);
-	print_stack_stuff(*a, *b);
+	assign_value_index(a);
+	assign_value_index(b);
 	assign_target_node_in_b(a, b);
+	assign_index(a);
+	assign_index(b);
 	above_median(a);
 	above_median(b);
+	push_price(a, b);
 	print_stack_stuff(*a, *b);	
-
-	printf("Node 1 = %d and target is %d\n", (*a)->number, (*a)->target_node->number);
-	printf("Node 2 = %d and target is %d\n", (*a)->next->number, (*a)->next->target_node->number);
-	printf("Node 3 = %d and target is %d\n", (*a)->next->next->number, (*a)->next->next->target_node->number);
-	exit(0);
+	exit(2);
 	// actually push to b
 }
 	
@@ -102,22 +96,23 @@ void	push_node_to_b(t_stack **a, t_stack **b)
 // Here I assign target nodes in b to nodes in a.
 void	assign_target_node_in_b(t_stack **a, t_stack **b)
 {	
-	t_stack *current; // only to traverse the list and assign target_node to them
-	t_stack *target; // node in "b" that I'm looking for
-	t_stack	*temp; // to traverse "b"
+	t_stack *current;
+	t_stack *target;
+	t_stack	*temp;
 	
 	current = *a;
 	while (current != NULL)
 	{
 		temp = *b;
-		target = *b; // I need to set it equal to "find_min_number" function I will create.
+		target = NULL;
 		while (temp != NULL)
 		{
-			if (temp->number < current->number && temp->number > target->number) // icky
+			if (temp->number < current->number && 
+			(target == NULL ||temp->number > target->number))
 				target = temp;
 			temp = temp->next;
 		}
-		if (target->number > current->number) // check the logic here again
+		if (target == NULL)
 			target = find_max_number(*b);
 		current->target_node = target;
 		current = current->next;
@@ -126,27 +121,25 @@ void	assign_target_node_in_b(t_stack **a, t_stack **b)
 
 // Here I calculate how many ops its gonna cost to move both nodes to the top.
 // For this I need to see if its above or below median FIRST.
-void	push_price(t_stack **lst)
+void	push_price(t_stack **a, t_stack **b)
 {
-	// Right now without any details, just want to make it work.
-	
 	t_stack	*temp;
 	int		count;
-	
-	temp = *lst;
+
+	temp = *a;
 	while (temp)
 	{
 		count = 0;
-		if (temp->above_median == true)			
+		if (temp->above_median == true)
 			count += temp->index;
 		else
-			count += 1; // the one is just dummy number, fix it later
+			count += ((ft_dlstsize(*a)) - (temp->index));
 		if (temp->target_node->above_median == true)
 			count += temp->target_node->index;
 		else
-			count += 1; // the one is just dummy number, fix it later
+			count += (ft_dlstsize(*b)) - (temp->target_node->index);
 		temp->push_price = count;
-		temp = temp->next;
+		temp = temp->next;	
 	}
 }
 
