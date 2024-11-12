@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/12 17:35:15 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:45:16 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	what2sort(t_stack **a)
 {
 	if (ft_dlstsize(*a) == 2)
-		ft_sa(a, 1);
+		sa(a, 1);
 	else if(ft_dlstsize(*a) == 3)
 		sort_3(a);
 	else
@@ -29,18 +29,18 @@ void	sort_3(t_stack **a)
 	// / maybe add check_if_sorted, let's see...
 	assign_value_index(a);
 	if ((*a)->next->next->value_index == 2)
-		ft_sa(a, 1);
+		sa(a, 1);
 	else if ((*a)->next->value_index == 2)
 	{
-		ft_rra(a, 1);
+		rra(a, 1);
 		if ((*a)->value_index == 1)
-			ft_sa(a, 1);
+			sa(a, 1);
 	}
 	else
 	{
-		ft_ra(a, 1);
+		ra(a, 1);
 		if ((*a)->value_index == 1)
-			ft_sa(a, 1);
+			sa(a, 1);
 	}
 }
 
@@ -52,17 +52,36 @@ void	sort_big(t_stack **a)
 	
 	i = 1;
 	b = NULL;
-	ft_pb(a, &b, 1); // first pb is automatic.
+	pb(a, &b, 1); // first pb is automatic.
 	if (!check_if_sorted(*a) && ft_dlstsize(*a) > 3) // Only if not sorted and above 3 elem.
-		ft_pb(a, &b, 1);
+		pb(a, &b, 1);
 	while (!check_if_sorted(*a) && ft_dlstsize(*a) > 3)
 	{
+		
+		preparing_nodes(a, &b);
+		print_stack_stuff(*a, b);
+		while (*a)
+		{
+			if ((*a)->cheapest)
+				printf("\ncheapest node value: %d\n", (*a)->number);
+			(*a) = (*a)->next;
+		}
+		
 		push_node_to_b(a, &b);
-		// ft where I assign index > target node > above_median or not > push_price > cheapest
-		// push_node_to_b
+		print_stack_stuff(*a, b);
+		while (*a)
+		{
+			if ((*a)->cheapest)
+				printf("\ncheapest node value: %d\n", (*a)->number);
+			(*a) = (*a)->next;
+		}
+		preparing_nodes(a, &b);
+		print_stack_stuff(*a, b);
+		push_node_to_b(a, &b);
+		
+		print_stack_stuff(*a, b);
 		// don't forget to reset bool for cheapest.
-		// OK do one function from the list above to start with. NOW.
-	//	ft_error();
+		ft_error();
 	}
 	sort_3(a);
 	// DO LATER while nodes in b keep pushing to a....
@@ -71,9 +90,7 @@ void	sort_big(t_stack **a)
 	// DO LATER free b
 }
 
-// Set of functions to assign index, target, price, cheapest and above_median to node.
-// Afterwards I pick the cheapest node and push it to b. Reset bools before or after??
-void	push_node_to_b(t_stack **a, t_stack **b)
+void	preparing_nodes(t_stack **a, t_stack **b)
 {
 	assign_value_index(a);
 	assign_value_index(b);
@@ -83,18 +100,23 @@ void	push_node_to_b(t_stack **a, t_stack **b)
 	above_median(a);
 	above_median(b);
 	push_price(a, b);
-	find_cheapest(*a);
-	ft_pb(a, b, 1);
+	find_cheapest(a);
+}
+
+// Set of functions to assign index, target, price, cheapest and above_median to node.
+// Afterwards I pick the cheapest node and push it to b. Reset bools before or after??
+void	push_node_to_b(t_stack **a, t_stack **b)
+{
+
 	
-	// while (*a)
-	// {
-	// 	if ((*a)->cheapest)
-	// 		printf("\ncheapest node value: %d", (*a)->number);
-	// 	(*a) = (*a)->next;
-	// }
-	print_stack_stuff(*a, *b);
+	while (*a)
+	{
+		if ((*a)->cheapest)
+			printf("\ncheapest node value: %d", (*a)->number);
+		(*a) = (*a)->next;
+	}
+	pb(a, b, 1);
 	
-	exit(2);
 }
 	
 // I NEED NEAREST LOWER OR MAX. I work with values of numbers here.
@@ -113,7 +135,7 @@ void	assign_target_node_in_b(t_stack **a, t_stack **b)
 		while (temp != NULL)
 		{
 			if (temp->number < current->number && 
-			(target == NULL ||temp->number > target->number))
+			(target == NULL || temp->number > target->number))
 				target = temp;
 			temp = temp->next;
 		}
@@ -134,7 +156,7 @@ void	push_price(t_stack **a, t_stack **b)
 	temp = *a;
 	while (temp)
 	{
-		count = 0;
+		count = 1;
 		if (temp->above_median == true)
 			count += temp->index;
 		else

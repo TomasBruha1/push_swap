@@ -1,7 +1,9 @@
 #include "push_swap.h"
 
 // STATUS UPDATE:
-// RIGHT NOW I NEED: find_cheapest > push cheapest to b.
+// RIGHT NOW I NEED: cheapest node is NOT the correct one. Check the cheapest function!!!!
+// how to do the right operations to push cheapest to b.
+// Do I need "get_cheapest_node"?
 // DO RESET FOR ALL IN ONE??
 // check what needs reset and what can be overwritten. reset values and repeat until 3 elem left in a.
 // Find where to push from b to a.
@@ -170,18 +172,18 @@ void	print_stack_stuff(t_stack *a, t_stack *b)
 // rules for target node a to b then b to a. // DONE
 // With all errors I have to free stack if error occurs.
 // error must be on stderror aka 2 in write. // DONE
+// Fix aka add second index function to make it work. // DONE
+// Function how to calculate push_price. // DONE
+// ft if above median > count / 2 right? // DONE
+// ft if cheapest // DONE
+// POSSIBLE PROBLEM: target nodes, check the option with find_min as written in the function // DONE
+// Don't forget that input can start as low as minut MIN_INT. // DONE
 
 // NOW
-// Fix aka add second index function to make it work.
-// Function how to calculate push_price.
+// implement Turk and sort
 
-// check above 3, implement Turk and sort
-// ft if cheapest
-// ft if above median > count / 2 right? // DONE
 // input problem with "-" // What about minus zero??	
-// POSSIBLE PROBLEM: target nodes, check the option with find_min as written in the function
-// Don't forget that input can start as low as minut MIN_INT.
 // Optimatization. Check the +1 on above_median
-// Optimatization.
+// Optimatization. push_price count all possible ways and choose the lowest.
 // On error don't forget to free stacks to avoid leaks.
 // make a list of functions that use memmory allock.

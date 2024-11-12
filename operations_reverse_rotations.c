@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:35:37 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/03 13:34:11 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:53:51 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // rra - Shifts down all elements in stack a, last one becomes first one.
 // Avoid using *a=*a->next (WHY? No idea).
-void	ft_rra(t_stack **a, int print)
+void	rra(t_stack **a, int print)
 {
 	t_stack	*temp;
 	t_stack *temp2;
@@ -33,7 +33,7 @@ void	ft_rra(t_stack **a, int print)
 }
 
 // rrb - Shifts down ll elements in stack b, last one becomes first one.
-void	ft_rrb(t_stack **b, int print)
+void	rrb(t_stack **b, int print)
 {
 	t_stack	*temp;
 	t_stack *temp2;
@@ -52,7 +52,7 @@ void	ft_rrb(t_stack **b, int print)
 }
 
 // It calls fake rra and rrb and do the moves then prints rrr.
-void	ft_rrr(t_stack **a, t_stack **b, int print)
+void	rrr(t_stack **a, t_stack **b, int print)
 {
 	fake_rra(a);
 	fake_rrb(b);

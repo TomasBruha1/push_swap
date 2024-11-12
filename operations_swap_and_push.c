@@ -6,14 +6,14 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:08:14 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/08 14:31:46 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:48:33 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // This function swaps first two elements in a.
-void	ft_sa(t_stack **a, int print)
+void	sa(t_stack **a, int print)
 {
 	t_stack	*temp;
 
@@ -28,7 +28,7 @@ void	ft_sa(t_stack **a, int print)
 }
 
 // This function swaps first two elements in b.
-void	ft_sb(t_stack **b, int print)
+void	sb(t_stack **b, int print)
 {
 	t_stack	*temp;
 
@@ -43,7 +43,7 @@ void	ft_sb(t_stack **b, int print)
 }
 
 // It does sa and sb at the same time for cost of one move and prints ss.
-void	ft_ss(t_stack **a, t_stack **b, int print)
+void	ss(t_stack **a, t_stack **b, int print)
 {
 	t_stack	*temp;
 
@@ -62,7 +62,7 @@ void	ft_ss(t_stack **a, t_stack **b, int print)
 }
 
 // Takes the top element of a and pushes it to top of b.
-void	ft_pb(t_stack **a, t_stack **b, int print)
+void	pb(t_stack **a, t_stack **b, int print)
 {
 	t_stack	*temp;
 
@@ -77,7 +77,7 @@ void	ft_pb(t_stack **a, t_stack **b, int print)
 }
 	
 // Takes the top element of b and pushes it to top of a.
-void	ft_pa(t_stack **a, t_stack **b, int print)
+void	pa(t_stack **a, t_stack **b, int print)
 {
 	t_stack *temp;
 

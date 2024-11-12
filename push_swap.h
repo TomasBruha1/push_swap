@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/12 17:23:03 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:45:06 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,22 @@ void	what2sort(t_stack **a);
 void	sort_3(t_stack **a);
 void	sort_big(t_stack **a);
 void	push_node_to_b(t_stack **a, t_stack **b);
-void	find_cheapest(t_stack *a);
+void	find_cheapest(t_stack **a);
+void	preparing_nodes(t_stack **a, t_stack **b);
 
 // OPERATIONS sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 
-void	ft_sa(t_stack **a, int print);
-void	ft_sb(t_stack **b, int print);
-void	ft_ss(t_stack **a, t_stack **b, int print);
-void	ft_pb(t_stack **a, t_stack **b, int print);
-void	ft_pa(t_stack **a, t_stack **b, int print);
-void	ft_ra(t_stack **a, int print);
-void	ft_rb(t_stack **b, int print);
-void	ft_rr(t_stack **a, t_stack **b, int print);
-void	ft_rra(t_stack **a, int print);
-void	ft_rrb(t_stack **b, int print);
-void	ft_rrr(t_stack **a, t_stack **b, int print);
+void	sa(t_stack **a, int print);
+void	sb(t_stack **b, int print);
+void	ss(t_stack **a, t_stack **b, int print);
+void	pb(t_stack **a, t_stack **b, int print);
+void	pa(t_stack **a, t_stack **b, int print);
+void	ra(t_stack **a, int print);
+void	rb(t_stack **b, int print);
+void	rr(t_stack **a, t_stack **b, int print);
+void	rra(t_stack **a, int print);
+void	rrb(t_stack **b, int print);
+void	rrr(t_stack **a, t_stack **b, int print);
 void	fake_rra(t_stack **a);
 void	fake_rrb(t_stack **b);
 

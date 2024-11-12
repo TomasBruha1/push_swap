@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 14:39:33 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/12 17:28:49 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:44:51 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,19 @@ void	assign_index(t_stack **lst)
 	}
 }
 
-void	find_cheapest(t_stack *a)
+// It will mark the node with lowest push_price bool for cheapest as true.
+void	find_cheapest(t_stack **a)
 {
 	t_stack	*cheapest_node;
+	t_stack	*temp;
 	
-	cheapest_node = a;
-	while (a)
+	cheapest_node = *a;
+	temp = *a;
+	while (temp)
 	{
-		if (a->push_price < cheapest_node->push_price)
-			cheapest_node = a;		
-		a = a->next;
+		if (temp->push_price < cheapest_node->push_price)
+			cheapest_node = temp;		
+		temp = temp->next;
 	}
 	cheapest_node->cheapest = true;
 }
