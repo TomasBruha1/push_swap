@@ -2,6 +2,7 @@
 
 // STATUS UPDATE:
 // RIGHT NOW I NEED: find_cheapest > push cheapest to b.
+// DO RESET FOR ALL IN ONE??
 // check what needs reset and what can be overwritten. reset values and repeat until 3 elem left in a.
 // Find where to push from b to a.
 
@@ -180,3 +181,7 @@ void	print_stack_stuff(t_stack *a, t_stack *b)
 // input problem with "-" // What about minus zero??	
 // POSSIBLE PROBLEM: target nodes, check the option with find_min as written in the function
 // Don't forget that input can start as low as minut MIN_INT.
+// Optimatization. Check the +1 on above_median
+// Optimatization.
+// On error don't forget to free stacks to avoid leaks.
+// make a list of functions that use memmory allock.

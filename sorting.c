@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/11 17:53:18 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:35:15 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,6 @@ void	sort_big(t_stack **a)
 // Afterwards I pick the cheapest node and push it to b. Reset bools before or after??
 void	push_node_to_b(t_stack **a, t_stack **b)
 {
-	ft_pb(a, b, 1);
-	ft_pb(a, b, 1);
-	ft_pb(a, b, 1);
-	ft_pb(a, b, 1);
 	assign_value_index(a);
 	assign_value_index(b);
 	assign_target_node_in_b(a, b);
@@ -87,9 +83,18 @@ void	push_node_to_b(t_stack **a, t_stack **b)
 	above_median(a);
 	above_median(b);
 	push_price(a, b);
-	print_stack_stuff(*a, *b);	
+	find_cheapest(*a);
+	ft_pb(a, b, 1);
+	
+	// while (*a)
+	// {
+	// 	if ((*a)->cheapest)
+	// 		printf("\ncheapest node value: %d", (*a)->number);
+	// 	(*a) = (*a)->next;
+	// }
+	print_stack_stuff(*a, *b);
+	
 	exit(2);
-	// actually push to b
 }
 	
 // I NEED NEAREST LOWER OR MAX. I work with values of numbers here.

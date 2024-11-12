@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/11 17:33:02 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:23:03 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	what2sort(t_stack **a);
 void	sort_3(t_stack **a);
 void	sort_big(t_stack **a);
 void	push_node_to_b(t_stack **a, t_stack **b);
+void	find_cheapest(t_stack *a);
 
 // OPERATIONS sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 

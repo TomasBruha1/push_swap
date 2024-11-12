@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 14:39:33 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/11 17:55:06 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:28:49 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,16 @@ void	assign_index(t_stack **lst)
 	}
 }
 
-t_stack	find_cheapest_node(t_stack *a)
+void	find_cheapest(t_stack *a)
 {
+	t_stack	*cheapest_node;
 	
+	cheapest_node = a;
+	while (a)
+	{
+		if (a->push_price < cheapest_node->push_price)
+			cheapest_node = a;		
+		a = a->next;
+	}
+	cheapest_node->cheapest = true;
 }
