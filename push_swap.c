@@ -1,9 +1,8 @@
 #include "push_swap.h"
 
 // STATUS UPDATE:
-// RIGHT NOW I NEED: cheapest node is NOT the correct one. Check the cheapest function!!!!
-// how to do the right operations to push cheapest to b.
-// Do I need "get_cheapest_node"?
+// RIGHT NOW I NEED: how to do the right operations to push cheapest to b.
+// Do I need "get_cheapest_node"? Yes I will do it.
 // DO RESET FOR ALL IN ONE??
 // check what needs reset and what can be overwritten. reset values and repeat until 3 elem left in a.
 // Find where to push from b to a.
@@ -123,12 +122,12 @@ void	print_stack_stuff(t_stack *a, t_stack *b)
 	{		
 		if (a->target_node != NULL)
 		{
-			printf("Node %d   value: %d   value_index: %d   index: %d   median: %d   target: %d   price: %d\n"
+			printf("Node %d   nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
 			, i, a->number, a->value_index, a->index, a->above_median, a->target_node->number, a->push_price);
 		}
 		else
 		{
-			printf("Node %d   value: %d   value_index: %d   index: %d   median: %d   price: %d\n"
+			printf("Node %d   nbr: %d   val_index: %d   index: %d   median: %d   price: %d\n"
 			, i, a->number, a->value_index, a->index, a->above_median, a->push_price);
 		}
 		a = a->next;
@@ -141,12 +140,12 @@ void	print_stack_stuff(t_stack *a, t_stack *b)
 	{		
 		if (b->target_node != NULL)
 		{
-			printf("Node %d   value: %d   value_index: %d   index: %d   median: %d   target: %d   price: %d\n"
+			printf("Node %d   nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
 			, i, b->number, b->value_index, b->index, b->above_median, b->target_node->number, b->push_price);
 		}
 		else
 		{
-			printf("Node %d   value: %d   value_index: %d   index: %d   median: %d   price: %d\n"
+			printf("Node %d   nbr: %d   val_index: %d   index: %d   median: %d   price: %d\n"
 			, i, b->number, b->value_index, b->index, b->above_median, b->push_price);
 		}
 		b = b->next;
@@ -187,3 +186,5 @@ void	print_stack_stuff(t_stack *a, t_stack *b)
 // Optimatization. push_price count all possible ways and choose the lowest.
 // On error don't forget to free stacks to avoid leaks.
 // make a list of functions that use memmory allock.
+// what if I make split on all the arguments starting with 1.
+// check functions to include prev or do I really need prev at all?

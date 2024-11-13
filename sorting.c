@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/12 18:45:16 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/13 16:38:22 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,36 +49,18 @@ void	sort_big(t_stack **a)
 {
 	t_stack	*b;
 	int		i;
+	t_stack *temp; // just for testing
 	
 	i = 1;
 	b = NULL;
+	temp = *a;
 	pb(a, &b, 1); // first pb is automatic.
 	if (!check_if_sorted(*a) && ft_dlstsize(*a) > 3) // Only if not sorted and above 3 elem.
 		pb(a, &b, 1);
 	while (!check_if_sorted(*a) && ft_dlstsize(*a) > 3)
 	{
-		
 		preparing_nodes(a, &b);
-		print_stack_stuff(*a, b);
-		while (*a)
-		{
-			if ((*a)->cheapest)
-				printf("\ncheapest node value: %d\n", (*a)->number);
-			(*a) = (*a)->next;
-		}
-		
 		push_node_to_b(a, &b);
-		print_stack_stuff(*a, b);
-		while (*a)
-		{
-			if ((*a)->cheapest)
-				printf("\ncheapest node value: %d\n", (*a)->number);
-			(*a) = (*a)->next;
-		}
-		preparing_nodes(a, &b);
-		print_stack_stuff(*a, b);
-		push_node_to_b(a, &b);
-		
 		print_stack_stuff(*a, b);
 		// don't forget to reset bool for cheapest.
 		ft_error();
@@ -107,18 +89,19 @@ void	preparing_nodes(t_stack **a, t_stack **b)
 // Afterwards I pick the cheapest node and push it to b. Reset bools before or after??
 void	push_node_to_b(t_stack **a, t_stack **b)
 {
-
+	t_stack *cheap;
 	
-	while (*a)
-	{
-		if ((*a)->cheapest)
-			printf("\ncheapest node value: %d", (*a)->number);
-		(*a) = (*a)->next;
-	}
+	cheap = get_cheapest_node(a);
+	if (cheap->above_median == true && cheap->target_node->above_median == true)
+		while (cheap !=*a || cheap->target_node !=*b)
+			rr(a, b, 1);
+	else if (cheap->above_median == false && cheap->target_node->above_median == false)
+		while (cheap !=*a || cheap->target_node !=*b)
+			rrr(a, b, 1);
+	push_to_top(a, b, cheap);
 	pb(a, b, 1);
-	
 }
-	
+
 // I NEED NEAREST LOWER OR MAX. I work with values of numbers here.
 // Here I assign target nodes in b to nodes in a.
 void	assign_target_node_in_b(t_stack **a, t_stack **b)
@@ -186,4 +169,24 @@ void	above_median(t_stack **lst)
 			temp->above_median = false;
 		temp = temp->next;
 	}
+}
+
+t_stack	*get_cheapest_node(t_stack **a)
+{
+	t_stack	*cheap;
+	t_stack *temp;
+
+	temp = *a;
+	while (temp)
+	{
+		if (temp->cheapest == true)
+			cheap = temp;
+		temp = temp->next;
+	}
+	return (cheap);
+}
+
+void	push_to_top(t_stack **a, t_stack **b, t_stack *cheapest_node)
+{
+	
 }

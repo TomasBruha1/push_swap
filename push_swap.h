@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/12 18:45:06 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/13 16:36:54 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	reset_value_index(t_stack **lst);
 void	above_median(t_stack **lst);
 void	push_price(t_stack **a, t_stack **b);
 void	assign_index(t_stack **lst);
+t_stack	*get_cheapest_node(t_stack **a);
 
 // SORTING FTs
 
@@ -74,6 +75,7 @@ void	sort_big(t_stack **a);
 void	push_node_to_b(t_stack **a, t_stack **b);
 void	find_cheapest(t_stack **a);
 void	preparing_nodes(t_stack **a, t_stack **b);
+void	push_to_top(t_stack **a, t_stack **b, t_stack *cheapest_node);
 
 // OPERATIONS sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 

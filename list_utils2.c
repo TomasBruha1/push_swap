@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 14:39:33 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/12 18:44:51 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/13 15:59:03 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ void	find_cheapest(t_stack **a)
 			cheapest_node = temp;		
 		temp = temp->next;
 	}
+	printf("cheapest node number: %d\n", cheapest_node->number);
 	cheapest_node->cheapest = true;
 }
