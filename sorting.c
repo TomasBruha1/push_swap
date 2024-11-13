@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/13 16:38:22 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/13 18:42:45 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	sort_big(t_stack **a)
 	while (!check_if_sorted(*a) && ft_dlstsize(*a) > 3)
 	{
 		preparing_nodes(a, &b);
-		push_node_to_b(a, &b);
 		print_stack_stuff(*a, b);
+		push_node_to_b(a, &b);
 		// don't forget to reset bool for cheapest.
-		ft_error();
 	}
 	sort_3(a);
+	print_stack_stuff(*a, b);
 	// DO LATER while nodes in b keep pushing to a....
 	// DO LATER ft push_node_to_a 
 	
@@ -74,6 +74,8 @@ void	sort_big(t_stack **a)
 
 void	preparing_nodes(t_stack **a, t_stack **b)
 {
+	reset_nodes(a);
+	reset_nodes(b);
 	assign_value_index(a);
 	assign_value_index(b);
 	assign_target_node_in_b(a, b);
@@ -92,13 +94,16 @@ void	push_node_to_b(t_stack **a, t_stack **b)
 	t_stack *cheap;
 	
 	cheap = get_cheapest_node(a);
-	if (cheap->above_median == true && cheap->target_node->above_median == true)
-		while (cheap !=*a || cheap->target_node !=*b)
+	if (cheap->above_median == true && 
+	cheap->target_node->above_median == true)
+		while (cheap != *a && cheap->target_node != *b)
 			rr(a, b, 1);
-	else if (cheap->above_median == false && cheap->target_node->above_median == false)
-		while (cheap !=*a || cheap->target_node !=*b)
+	else if (cheap->above_median == false && 
+	cheap->target_node->above_median == false)
+		while (cheap !=*a && cheap->target_node !=*b)
 			rrr(a, b, 1);
 	push_to_top(a, b, cheap);
+	printf("\ntop of a: %d\ntop of b: %d\n\n", (*a)->number, (*b)->number);
 	pb(a, b, 1);
 }
 
@@ -171,6 +176,7 @@ void	above_median(t_stack **lst)
 	}
 }
 
+// It finds and returns node with cheapest push_price.
 t_stack	*get_cheapest_node(t_stack **a)
 {
 	t_stack	*cheap;
@@ -186,7 +192,19 @@ t_stack	*get_cheapest_node(t_stack **a)
 	return (cheap);
 }
 
-void	push_to_top(t_stack **a, t_stack **b, t_stack *cheapest_node)
+// It will rotate cheapest and his target node to top of both stacks.
+void	push_to_top(t_stack **a, t_stack **b, t_stack *cheap)
 {
-	
+	if (cheap->above_median == true)
+		while (cheap != *a)
+			ra(a, 1);
+	else
+		while (cheap != *a)
+			rra(a, 1);
+	if (cheap->target_node->above_median == true)
+		while (cheap->target_node !=*b)
+			rb(b, 1);
+	else
+		while (cheap->target_node != *b)
+			rrb(b, 1);
 }

@@ -1,11 +1,8 @@
 #include "push_swap.h"
 
 // STATUS UPDATE:
-// RIGHT NOW I NEED: how to do the right operations to push cheapest to b.
-// Do I need "get_cheapest_node"? Yes I will do it.
-// DO RESET FOR ALL IN ONE??
-// check what needs reset and what can be overwritten. reset values and repeat until 3 elem left in a.
-// Find where to push from b to a.
+// RIGHT NOW I NEED: run test with 10 nbrs and check what is wrong. Maybe another check of RESET function?
+// Find where to push from b to a and do that with corresponding preping function.
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -114,42 +111,36 @@ int	is_arg_valid(char *arg)
 
 void	print_stack_stuff(t_stack *a, t_stack *b)
 {
-	int	i;
-	
-	i = 1;
-	printf("STACK A\n");
+	printf("\nSTACK A\n");
 	while (a != NULL)
 	{		
 		if (a->target_node != NULL)
 		{
-			printf("Node %d   nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
-			, i, a->number, a->value_index, a->index, a->above_median, a->target_node->number, a->push_price);
+			printf("nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
+			,a->number, a->value_index, a->index, a->above_median, a->target_node->number, a->push_price);
 		}
 		else
 		{
-			printf("Node %d   nbr: %d   val_index: %d   index: %d   median: %d   price: %d\n"
-			, i, a->number, a->value_index, a->index, a->above_median, a->push_price);
+			printf("nbr: %d   val_index: %d   index: %d   median: %d   price: %d\n"
+			,a->number, a->value_index, a->index, a->above_median, a->push_price);
 		}
 		a = a->next;
-		i++;
 	}
 	write(1, "\n", 1);
 	printf("STACK B\n");
-	i = 1;
 	while (b != NULL)
 	{		
 		if (b->target_node != NULL)
 		{
-			printf("Node %d   nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
-			, i, b->number, b->value_index, b->index, b->above_median, b->target_node->number, b->push_price);
+			printf("nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
+			,b->number, b->value_index, b->index, b->above_median, b->target_node->number, b->push_price);
 		}
 		else
 		{
-			printf("Node %d   nbr: %d   val_index: %d   index: %d   median: %d   price: %d\n"
-			, i, b->number, b->value_index, b->index, b->above_median, b->push_price);
+			printf("nbr: %d   val_index: %d   index: %d   median: %d   price: %d\n"
+			,b->number, b->value_index, b->index, b->above_median, b->push_price);
 		}
 		b = b->next;
-		i++;
 	}
 	write(1, "\n", 1);
 }
@@ -181,6 +172,7 @@ void	print_stack_stuff(t_stack *a, t_stack *b)
 // NOW
 // implement Turk and sort
 
+// check logic at double rotations, the while condition
 // input problem with "-" // What about minus zero??	
 // Optimatization. Check the +1 on above_median
 // Optimatization. push_price count all possible ways and choose the lowest.

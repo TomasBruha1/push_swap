@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/13 16:36:54 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/13 17:59:58 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_stack	*find_max_index(t_stack *lst);
 t_stack	*find_max_number(t_stack *lst);
 void	assign_target_node_in_b(t_stack **a, t_stack **b);
 void	assign_value_index(t_stack **lst);
-void	reset_value_index(t_stack **lst);
+void	reset_nodes(t_stack **lst);
 void	above_median(t_stack **lst);
 void	push_price(t_stack **a, t_stack **b);
 void	assign_index(t_stack **lst);
@@ -75,7 +75,7 @@ void	sort_big(t_stack **a);
 void	push_node_to_b(t_stack **a, t_stack **b);
 void	find_cheapest(t_stack **a);
 void	preparing_nodes(t_stack **a, t_stack **b);
-void	push_to_top(t_stack **a, t_stack **b, t_stack *cheapest_node);
+void	push_to_top(t_stack **a, t_stack **b, t_stack *cheap);
 
 // OPERATIONS sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 

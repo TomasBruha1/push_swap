@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:43:05 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/11 15:58:09 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/13 17:51:24 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	assign_value_index(t_stack **lst)
 	
 	if (!*lst)
 		return ;
-	reset_value_index(lst);
 	index = 0;
 	while (1)
 	{

@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 14:39:33 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/13 15:59:03 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/13 17:58:53 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_stack	*find_max_number(t_stack *lst)
 }
 
 // This function resets value_index for all nodes in the stack to -1.
-void	reset_value_index(t_stack **lst)
+void	reset_nodes(t_stack **lst)
 {
 	t_stack	*temp;
 
@@ -104,6 +104,5 @@ void	find_cheapest(t_stack **a)
 			cheapest_node = temp;		
 		temp = temp->next;
 	}
-	printf("cheapest node number: %d\n", cheapest_node->number);
 	cheapest_node->cheapest = true;
 }
