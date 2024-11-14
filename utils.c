@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:31:42 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/03 12:32:20 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:09:48 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,10 @@ int	check_if_sorted(t_stack *a)
 {
 	int		i;
 	
-	if (!a)
-	 	return (0); // These two lines will be deleted after testing.
 	if (!a)	
 		ft_error(); // This checks for empty " ".
 	i = a->number;
-	while(a) // PROBLEM IS HERE
+	while(a)
 	{
 		if (i > a->number)
 			return (0);

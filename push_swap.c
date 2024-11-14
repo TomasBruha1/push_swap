@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
+/*   Updated: 2024/11/14 19:08:11 by tbruha           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "push_swap.h"
 
 // STATUS UPDATE:
-// RIGHT NOW I NEED: run test with 10 nbrs and check what is wrong. Maybe another check of RESET function?
-// Find where to push from b to a and do that with corresponding preping function.
+// RIGHT NOW I NEED: Find where to push from b to a and do that with corresponding preping function.
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -22,17 +34,8 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		init_stack(&a, argv);
 	check_duplicates(a);
-	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
-		printf("a is SORTED\n");
-	else
-	{
-		printf("inicialy \"a\" was NOT SORTED\n\n");
+	if (!check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
 		what2sort(&a);
-		write(1, "\n", 1);
-	}
-	if (check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
-		printf("a is SORTED now\n\n");
-	printf("end\n");
 	// free stack a
 	return (0);	
 }
@@ -168,11 +171,12 @@ void	print_stack_stuff(t_stack *a, t_stack *b)
 // ft if cheapest // DONE
 // POSSIBLE PROBLEM: target nodes, check the option with find_min as written in the function // DONE
 // Don't forget that input can start as low as minut MIN_INT. // DONE
+// check logic at double rotations, the while condition. // DONE
+// add two conditions to push_price to count prior of pushing. // DONE
 
 // NOW
 // implement Turk and sort
 
-// check logic at double rotations, the while condition
 // input problem with "-" // What about minus zero??	
 // Optimatization. Check the +1 on above_median
 // Optimatization. push_price count all possible ways and choose the lowest.

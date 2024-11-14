@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/13 17:59:58 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/14 18:50:43 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,16 @@ t_stack	*ft_dlstnew(void *content);
 int		ft_dlstsize(t_stack *lst);
 t_stack	*find_min_index(t_stack *lst);
 t_stack	*find_max_index(t_stack *lst);
+t_stack	*find_min_number(t_stack *lst);
 t_stack	*find_max_number(t_stack *lst);
 void	assign_target_node_in_b(t_stack **a, t_stack **b);
+void	assign_target_node_in_a(t_stack **a, t_stack **b);
 void	assign_value_index(t_stack **lst);
 void	reset_nodes(t_stack **lst);
 void	above_median(t_stack **lst);
-void	push_price(t_stack **a, t_stack **b);
+void	push_price_a_nodes(t_stack **a, t_stack **b);
+void	push_price_b_nodes(t_stack **a, t_stack **b);
+int		price_reduction_count(int count_a, int count_b);
 void	assign_index(t_stack **lst);
 t_stack	*get_cheapest_node(t_stack **a);
 
@@ -73,9 +77,13 @@ void	what2sort(t_stack **a);
 void	sort_3(t_stack **a);
 void	sort_big(t_stack **a);
 void	push_node_to_b(t_stack **a, t_stack **b);
+void	push_node_to_a(t_stack **a, t_stack **b);
 void	find_cheapest(t_stack **a);
-void	preparing_nodes(t_stack **a, t_stack **b);
+void	prep_nodes_in_a(t_stack **a, t_stack **b);
+void	prep_nodes_in_b(t_stack **a, t_stack **b);
 void	push_to_top(t_stack **a, t_stack **b, t_stack *cheap);
+void	push_to_top2(t_stack **a, t_stack **b, t_stack *cheap);
+void	min_on_top(t_stack **a);
 
 // OPERATIONS sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 
