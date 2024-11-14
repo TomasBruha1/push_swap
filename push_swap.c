@@ -6,15 +6,18 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/14 19:08:11 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/14 20:13:54 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-// STATUS UPDATE:
-// RIGHT NOW I NEED: Find where to push from b to a and do that with corresponding preping function.
+// STATUS UPDATE, NOW: Organize functions into max 5 per file.
+// NEXT-> Checker if OK or KO.
+// NEXT-> Implement FREE functions.
+// NEXT-> NORMINETTE
+
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -34,9 +37,9 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		init_stack(&a, argv);
 	check_duplicates(a);
-	if (!check_if_sorted(a)) // right now just printing SORTED/NOT SORTED.
+	if (!check_if_sorted(a))
 		what2sort(&a);
-	// free stack a
+	// FREE STACK A
 	return (0);	
 }
 

@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/14 18:50:43 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:38:43 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ void	rrb(t_stack **b, int print);
 void	rrr(t_stack **a, t_stack **b, int print);
 void	fake_rra(t_stack **a);
 void	fake_rrb(t_stack **b);
+
+// FREEing stuff
 
 // HELPER DELETE LATER
 
