@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/14 20:13:54 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/15 11:18:54 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 // During init there are checks for valid arguments. Once we have stack a
 // I check for duplicates and then if it is sorted. If not let's sort.
 // Lastly I free stack a and b if needed.
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -39,6 +40,7 @@ int	main(int argc, char **argv)
 	check_duplicates(a);
 	if (!check_if_sorted(a))
 		what2sort(&a);
+	min_on_top(&a);
 	// FREE STACK A
 	return (0);	
 }
