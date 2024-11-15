@@ -6,24 +6,20 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/15 11:18:54 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/15 17:42:39 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-// STATUS UPDATE, NOW: Organize functions into max 5 per file.
-// NEXT-> Checker if OK or KO.
-// NEXT-> Implement FREE functions.
+// STATUS UPDATE, NOW: Implement FREE functions.
 // NEXT-> NORMINETTE
-
+// NEXT-> Try to send them back without "sorting" >> THAT MUST BE IT!!!
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
 // I check for duplicates and then if it is sorted. If not let's sort.
-// Lastly I free stack a and b if needed.
-
+// Lastly I free stack a.
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -40,9 +36,8 @@ int	main(int argc, char **argv)
 	check_duplicates(a);
 	if (!check_if_sorted(a))
 		what2sort(&a);
-	min_on_top(&a);
 	// FREE STACK A
-	return (0);	
+	return (0);
 }
 
 // It returns array with numbers(or other stuff) -> I will check args after.
@@ -75,7 +70,7 @@ void	init_parse_stack(t_stack **a, char **argv)
 // Here I initialize stack a with arguments from argv. They are checked
 // by is_arg_valid before that.
 void	init_stack(t_stack **a, char **argv)
-{	
+{
 	int		i;
 	int		*arg;
 
@@ -96,32 +91,48 @@ void	init_stack(t_stack **a, char **argv)
 	}
 }
 
-// I will send args from argv[] parsed or not and check if their ok.
-// Checks if number, int MIN/MAX.
-int	is_arg_valid(char *arg)
+// I'm checking if the stack is sorted and if not it will go to ft sort.
+// I also have check for empty stack a to prevent input such as: " ".
+int	check_if_sorted(t_stack *a)
 {
-	int i;
+	int		i;
 
-	i = 0;
-	// Fix the solo "minus" sign issue here.
-	if (arg[i] == '-' || arg[i] == '+')
-		i++;
-	while (arg[i])
+	if (!a)
+		ft_error();
+	i = a->number;
+	while (a)
 	{
-		if (!ft_isdigit(arg[i]))
-			return (1);
-		i++;
+		if (i > a->number)
+			return (0);
+		i = a->number;
+		a = a->next;
 	}
-	if (ft_atol(arg) <= INT_MIN || ft_atol(arg) >= INT_MAX)
-		return (1);
-	return (0);
+	return (1);
+}
+
+// Here I check the list for duplicates.
+void	check_duplicates(t_stack *lst)
+{
+	t_stack	*temp;
+
+	while (lst)
+	{
+		temp = lst->next;
+		while (temp)
+		{
+			if (lst->number == temp->number)
+				ft_error();
+			temp = temp->next;
+		}
+		lst = lst->next;
+	}
 }
 
 void	print_stack_stuff(t_stack *a, t_stack *b)
 {
 	printf("\nSTACK A\n");
 	while (a != NULL)
-	{		
+	{
 		if (a->target_node != NULL)
 		{
 			printf("nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
@@ -153,36 +164,6 @@ void	print_stack_stuff(t_stack *a, t_stack *b)
 	write(1, "\n", 1);
 }
 
-// String valid ft?? Check for errors ft?? // DONE
-// Declare structs a and b // DONE
-// Argument count check and empty second argument check // DONE
-// if string use split. How to differ one # and string >> I dont have to. // DONE
-// Check overflow // DONE
-// Check duplicates // DONE
-// Check syntax errors such as "123", Only + - is allowed. // DONE
-// Initialize and check OR check one by one and then pass??? // DONE
-// operations 11x // DONE
-// Check if sorted // DONE
-// check for 2 and sort // DONE
-// check for 3 and sort // DONE
-// helper functions 1/2 -> stack len, last node // DONE
-// helper functions 2/2 -> min and max node // DONE
-// rules for target node a to b then b to a. // DONE
-// With all errors I have to free stack if error occurs.
-// error must be on stderror aka 2 in write. // DONE
-// Fix aka add second index function to make it work. // DONE
-// Function how to calculate push_price. // DONE
-// ft if above median > count / 2 right? // DONE
-// ft if cheapest // DONE
-// POSSIBLE PROBLEM: target nodes, check the option with find_min as written in the function // DONE
-// Don't forget that input can start as low as minut MIN_INT. // DONE
-// check logic at double rotations, the while condition. // DONE
-// add two conditions to push_price to count prior of pushing. // DONE
-
-// NOW
-// implement Turk and sort
-
-// input problem with "-" // What about minus zero??	
 // Optimatization. Check the +1 on above_median
 // Optimatization. push_price count all possible ways and choose the lowest.
 // On error don't forget to free stacks to avoid leaks.

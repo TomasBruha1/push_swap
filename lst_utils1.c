@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   lst_utils1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:43:05 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/14 19:08:20 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/15 13:24:24 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_stack	*ft_dlstlast(t_stack *lst)
 }
 
 // It creates new node in double linked list.
-// Do I need to NULL rest of the attributes for this node?
 t_stack	*ft_dlstnew(void *content)
 {
 	t_stack	*new_node;
@@ -80,35 +79,4 @@ int	ft_dlstsize(t_stack *lst)
 		count++;
 	}
 	return (count);
-}
-
-// This function will give each node in the stack an index value.
-void	assign_value_index(t_stack **lst)
-{
-	t_stack	*current;
-	t_stack	*min_node;
-	int		index;
-	int		min_number;
-	
-	if (!*lst)
-		return ;
-	index = 0;
-	while (1)
-	{
-		current = *lst;
-		min_node = NULL;
-		min_number = INT_MAX;
-		while (current)
-		{
-			if (current->number < min_number && current->value_index == -1)
-			{
-				min_number = current->number;
-				min_node = current;
-			}
-			current = current->next;
-		}
-		if (min_node == NULL)
-			break ;
-		min_node->value_index = index++;
-	}
 }

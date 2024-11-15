@@ -1,22 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   errors_free_and_other.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 15:31:42 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/14 19:09:48 by tbruha           ###   ########.fr       */
+/*   Created: 2024/11/15 11:22:09 by tbruha            #+#    #+#             */
+/*   Updated: 2024/11/15 17:42:53 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// I will send args from argv[] parsed or not and check if their ok.
+// Checks if number, int MIN/MAX.
+int	is_arg_valid(char *arg)
+{
+	int	i;
+
+	i = 0;
+	if ((arg[i] == '-' || arg[i] == '+') && ft_isdigit(arg[i + 1]) != 0)
+		i++;
+	while (arg[i])
+	{
+		if (!ft_isdigit(arg[i]))
+			return (1);
+		i++;
+	}
+	if (ft_atol(arg) <= INT_MIN || ft_atol(arg) >= INT_MAX)
+		return (1);
+	return (0);
+}
+
 // Converting sent argument to long so I can check if the number is within INT.
 long	ft_atol(const char *nptr)
 {
-	long		res;
-	long		sign;
+	long	res;
+	long	sign;
 	size_t	i;
 
 	res = 0;
@@ -41,40 +61,9 @@ long	ft_atol(const char *nptr)
 	return (res);
 }
 
-// Here I check the list for duplicates.
-void	check_duplicates(t_stack *lst)
+// Writes Error and exits.
+void	ft_error(void)
 {
-	t_stack	*temp;
-
-	while (lst)
-	{
-		temp = lst->next;
-		while (temp)
-		{
-			if (lst->number == temp->number)
-				ft_error();
-			temp = temp->next;			
-		}
-		lst = lst->next;
-	}
-}
-
-// I'm checking if the stack is sorted and if not it will go to ft sort.
-// I also have check for empty stack a to prevent input such as: " ".
-// I might need to move the check for " ". It causes problems.
-int	check_if_sorted(t_stack *a)
-{
-	int		i;
-	
-	if (!a)	
-		ft_error(); // This checks for empty " ".
-	i = a->number;
-	while(a)
-	{
-		if (i > a->number)
-			return (0);
-		i = a->number;
-		a = a->next;
-	}
-	return (1);
+	write(2, "Error\n", 6);
+	exit (1);
 }

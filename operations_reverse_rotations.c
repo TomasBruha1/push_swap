@@ -6,19 +6,18 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:35:37 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/12 17:53:51 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/15 16:39:34 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // rra - Shifts down all elements in stack a, last one becomes first one.
-// Avoid using *a=*a->next (WHY? No idea).
 void	rra(t_stack **a, int print)
 {
 	t_stack	*temp;
-	t_stack *temp2;
-	
+	t_stack	*temp2;
+
 	if (!*a || !(*a)->next)
 		return ;
 	temp = ft_dlstlast(*a);
@@ -36,8 +35,8 @@ void	rra(t_stack **a, int print)
 void	rrb(t_stack **b, int print)
 {
 	t_stack	*temp;
-	t_stack *temp2;
-	
+	t_stack	*temp2;
+
 	if (!*b || !(*b)->next)
 		return ;
 	temp = ft_dlstlast(*b);
@@ -64,8 +63,8 @@ void	rrr(t_stack **a, t_stack **b, int print)
 void	fake_rra(t_stack **a)
 {
 	t_stack	*temp;
-	t_stack *temp2;
-	
+	t_stack	*temp2;
+
 	if (!*a || !(*a)->next)
 		return ;
 	temp = ft_dlstlast(*a);
@@ -81,8 +80,8 @@ void	fake_rra(t_stack **a)
 void	fake_rrb(t_stack **b)
 {
 	t_stack	*temp;
-	t_stack *temp2;
-	
+	t_stack	*temp2;
+
 	if (!*b || !(*b)->next)
 		return ;
 	temp = ft_dlstlast(*b);
