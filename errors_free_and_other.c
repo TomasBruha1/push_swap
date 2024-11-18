@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:22:09 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/15 17:42:53 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:57:54 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,19 @@ long	ft_atol(const char *nptr)
 void	ft_error(void)
 {
 	write(2, "Error\n", 6);
-	exit (1);
+	exit (2);
+}
+
+// It will free particular stack.
+void free_stack(t_stack **stack)
+{
+	t_stack	*temp;
+	
+	temp = *stack;
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
+	}
 }

@@ -6,13 +6,14 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/18 16:08:57 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 17:37:06 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// STATUS UPDATE, NOW: Implement FREE functions.
+// STATUS UPDATE, NOW: Implement FREE functions -> check libft bonus for free lst function.
+// Only FREE or also delete?
 // NEXT-> NORMINETTE
 
 // On error don't forget to free stacks to avoid leaks.
@@ -40,7 +41,7 @@ int	main(int argc, char **argv)
 	check_duplicates(a);
 	if (!check_if_sorted(a))
 		what2sort(&a);
-	// FREE STACK A
+	free_stack(&a);
 	return (0);
 }
 
@@ -66,6 +67,7 @@ void	init_parse_stack(t_stack **a, char **argv)
 		}
 		*arg = ft_atoi(temp[i]);
 		ft_dlstadd_back(a, ft_dlstnew(arg));
+		free(arg);
 		i++;
 	}
 	free(temp);
@@ -91,6 +93,7 @@ void	init_stack(t_stack **a, char **argv)
 		}
 		*arg = ft_atoi(argv[i]);
 		ft_dlstadd_back(a, ft_dlstnew(arg));
+		free(arg);
 		i++;
 	}
 }
@@ -125,7 +128,10 @@ void	check_duplicates(t_stack *lst)
 		while (temp)
 		{
 			if (lst->number == temp->number)
+			{
+				free_stack(&lst);
 				ft_error();
+			}
 			temp = temp->next;
 		}
 		lst = lst->next;

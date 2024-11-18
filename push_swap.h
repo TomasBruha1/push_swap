@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/18 16:22:57 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:59:02 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	check_duplicates(t_stack *lst);
 long	ft_atol(const char *nptr);
 void	ft_error(void);
 int		is_arg_valid(char *arg);
+void	free_stack(t_stack **stack);
 
 // LIST FTs
 
