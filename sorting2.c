@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:10:12 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/18 14:50:43 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:22:28 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	prep_nodes_in_a(t_stack **a, t_stack **b)
 {
 	reset_nodes(a);
 	reset_nodes(b);
-	assign_value_index(a);
-	assign_value_index(b);
+	assign_value_index(a, 0);
+	assign_value_index(b, 0);
 	assign_target_node_in_b(a, b);
 	assign_index(a);
 	assign_index(b);
@@ -36,8 +36,6 @@ void	prep_nodes_in_b(t_stack **a, t_stack **b)
 	assign_index(b);
 	above_median(a);
 	above_median(b);
-	// push_price_b_nodes(a, b);
-	// find_cheapest(b);
 }
 
 // It will rotate cheap and his target node to top of both stacks. (a -> b)

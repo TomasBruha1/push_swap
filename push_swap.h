@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/15 16:39:14 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:22:57 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ t_stack	*get_cheapest_node(t_stack **a);
 
 void	assign_target_node_in_b(t_stack **a, t_stack **b);
 void	assign_target_node_in_a(t_stack **a, t_stack **b);
-void	assign_value_index(t_stack **lst);
+void	assign_value_index(t_stack **lst, int index);
 void	reset_nodes(t_stack **lst);
 void	find_cheapest(t_stack **a);
 void	push_price_a_nodes(t_stack **a, t_stack **b);
-void	push_price_b_nodes(t_stack **a, t_stack **b);
+void	push_price_b_nodes(t_stack **a, t_stack **b, int count_a, int count_b);
 int		price_reduction_count(int count_a, int count_b);
 void	assign_index(t_stack **lst);
 void	above_median(t_stack **lst);

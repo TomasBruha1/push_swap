@@ -6,15 +6,19 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/18 14:50:10 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:08:57 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// NEXT-> not rotating correctly based on above or below median.
 // STATUS UPDATE, NOW: Implement FREE functions.
 // NEXT-> NORMINETTE
+
+// On error don't forget to free stacks to avoid leaks.
+// make a list of functions that use memmory allock.
+// what if I make split on all the arguments starting with 1.
+// check functions to include prev or do I really need prev at all?
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -127,46 +131,3 @@ void	check_duplicates(t_stack *lst)
 		lst = lst->next;
 	}
 }
-
-void	print_stack_stuff(t_stack *a, t_stack *b)
-{
-	printf("\nSTACK A\n");
-	while (a != NULL)
-	{
-		if (a->target_node != NULL)
-		{
-			printf("nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
-			,a->number, a->value_index, a->index, a->above_median, a->target_node->number, a->push_price);
-		}
-		else
-		{
-			printf("nbr: %d   val_index: %d   index: %d   median: %d   price: %d\n"
-			,a->number, a->value_index, a->index, a->above_median, a->push_price);
-		}
-		a = a->next;
-	}
-	write(1, "\n", 1);
-	printf("STACK B\n");
-	while (b != NULL)
-	{		
-		if (b->target_node != NULL)
-		{
-			printf("nbr: %d   val_index: %d   index: %d   median: %d   tar: %d   price: %d\n"
-			,b->number, b->value_index, b->index, b->above_median, b->target_node->number, b->push_price);
-		}
-		else
-		{
-			printf("nbr: %d   val_index: %d   index: %d   median: %d   price: %d\n"
-			,b->number, b->value_index, b->index, b->above_median, b->push_price);
-		}
-		b = b->next;
-	}
-	write(1, "\n", 1);
-}
-
-// Optimatization. Check the +1 on above_median
-// Optimatization. push_price count all possible ways and choose the lowest.
-// On error don't forget to free stacks to avoid leaks.
-// make a list of functions that use memmory allock.
-// what if I make split on all the arguments starting with 1.
-// check functions to include prev or do I really need prev at all?

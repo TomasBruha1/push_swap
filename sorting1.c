@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/18 14:30:51 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:25:30 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	what2sort(t_stack **a)
 // Hard coded for exactly 3 elements.
 void	sort_3(t_stack **a)
 {
-	assign_value_index(a);
+	assign_value_index(a, 0);
 	if ((*a)->next->next->value_index == 2)
 		sa(a, 1);
 	else if ((*a)->next->value_index == 2)
@@ -81,13 +81,13 @@ void	push_node_to_b(t_stack **a, t_stack **b)
 	t_stack	*cheap;
 
 	cheap = get_cheapest_node(a);
-	if (cheap->above_median == true &&
-	cheap->target_node->above_median == true)
+	if (cheap->above_median == true
+		&& cheap->target_node->above_median == true)
 		while (cheap != *a && cheap->target_node != *b)
 			rr(a, b, 1);
-	else if (cheap->above_median == false && 
-	cheap->target_node->above_median == false)
-		while (cheap !=*a && cheap->target_node !=*b)
+	else if (cheap->above_median == false
+		&& cheap->target_node->above_median == false)
+		while (cheap != *a && cheap->target_node != *b)
 			rrr(a, b, 1);
 	push_to_top(a, b, cheap);
 	pb(a, b, 1);
@@ -98,16 +98,16 @@ void	push_node_to_b(t_stack **a, t_stack **b)
 // with single rotations to top of stacks and push back to a.
 void	push_node_to_a(t_stack **a, t_stack **b)
 {
-	t_stack *current;
-	
+	t_stack	*current;
+
 	current = *b;
-	if (current->above_median == true && 
-	current->target_node->above_median == true)
+	if (current->above_median == true
+		&& current->target_node->above_median == true)
 		while (current != *b && current->target_node != *a)
 			rr(a, b, 1);
-	else if (current->above_median == false && 
-	current->target_node->above_median == false)
-		while (current !=*b && current->target_node !=*a)
+	else if (current->above_median == false
+		&& current->target_node->above_median == false)
+		while (current != *b && current->target_node != *a)
 			rrr(a, b, 1);
 	push_to_top2(a, b, current);
 	pa(a, b, 1);

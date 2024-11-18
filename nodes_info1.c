@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:28:30 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/15 13:20:59 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:22:07 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 // Here I assign target nodes in b to nodes in a.
 // I look for closest lower or MAX number.
 void	assign_target_node_in_b(t_stack **a, t_stack **b)
-{	
-	t_stack *current;
-	t_stack *target;
+{
+	t_stack	*current;
+	t_stack	*target;
 	t_stack	*temp;
-	
+
 	current = *a;
 	while (current != NULL)
 	{
@@ -27,8 +27,8 @@ void	assign_target_node_in_b(t_stack **a, t_stack **b)
 		target = NULL;
 		while (temp != NULL)
 		{
-			if (temp->number < current->number && 
-			(target == NULL || temp->number > target->number))
+			if (temp->number < current->number
+				&& (target == NULL || temp->number > target->number))
 				target = temp;
 			temp = temp->next;
 		}
@@ -42,11 +42,11 @@ void	assign_target_node_in_b(t_stack **a, t_stack **b)
 // Here I assign target nodes in b to nodes in a.
 // I'm looking for closest higher or MIN node.
 void	assign_target_node_in_a(t_stack **a, t_stack **b)
-{	
-	t_stack *current;
-	t_stack *target;
+{
+	t_stack	*current;
+	t_stack	*target;
 	t_stack	*temp;
-	
+
 	current = *b;
 	while (current != NULL)
 	{
@@ -54,8 +54,8 @@ void	assign_target_node_in_a(t_stack **a, t_stack **b)
 		target = NULL;
 		while (temp != NULL)
 		{
-			if (temp->number > current->number && 
-			(target == NULL || temp->number < target->number))
+			if (temp->number > current->number
+				&& (target == NULL || temp->number < target->number))
 				target = temp;
 			temp = temp->next;
 		}
@@ -67,16 +67,14 @@ void	assign_target_node_in_a(t_stack **a, t_stack **b)
 }
 
 // This function will give each node in the stack an index value.
-void	assign_value_index(t_stack **lst)
+void	assign_value_index(t_stack **lst, int index)
 {
 	t_stack	*current;
 	t_stack	*min_node;
-	int		index;
 	int		min_number;
-	
+
 	if (!*lst)
 		return ;
-	index = 0;
 	while (1)
 	{
 		current = *lst;
