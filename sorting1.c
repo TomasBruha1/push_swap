@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/15 17:22:05 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:30:51 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,17 @@ void	push_node_to_b(t_stack **a, t_stack **b)
 // with single rotations to top of stacks and push back to a.
 void	push_node_to_a(t_stack **a, t_stack **b)
 {
-	t_stack *cheap;
+	t_stack *current;
 	
-	cheap = get_cheapest_node(b);
-	if (cheap->above_median == true && 
-	cheap->target_node->above_median == true)
-		while (cheap != *b && cheap->target_node != *a)
+	current = *b;
+	if (current->above_median == true && 
+	current->target_node->above_median == true)
+		while (current != *b && current->target_node != *a)
 			rr(a, b, 1);
-	else if (cheap->above_median == false && 
-	cheap->target_node->above_median == false)
-		while (cheap !=*b && cheap->target_node !=*a)
+	else if (current->above_median == false && 
+	current->target_node->above_median == false)
+		while (current !=*b && current->target_node !=*a)
 			rrr(a, b, 1);
-	push_to_top2(a, b, cheap);
+	push_to_top2(a, b, current);
 	pa(a, b, 1);
 }

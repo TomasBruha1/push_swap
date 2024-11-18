@@ -6,15 +6,15 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/15 17:42:39 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:50:10 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// NEXT-> not rotating correctly based on above or below median.
 // STATUS UPDATE, NOW: Implement FREE functions.
 // NEXT-> NORMINETTE
-// NEXT-> Try to send them back without "sorting" >> THAT MUST BE IT!!!
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
