@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/18 17:37:06 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/19 20:13:58 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 // STATUS UPDATE, NOW: Implement FREE functions -> check libft bonus for free lst function.
 // Only FREE or also delete?
 // NEXT-> NORMINETTE
+
+// LEAKS: duplicate fixed
+// LEAKS: duplicate in string >> ft_split problem
+// LEAKS: 
 
 // On error don't forget to free stacks to avoid leaks.
 // make a list of functions that use memmory allock.
@@ -58,7 +62,10 @@ void	init_parse_stack(t_stack **a, char **argv)
 	while (temp[i])
 	{
 		if (is_arg_valid(temp[i]))
+		{
+			free_stack(a);
 			ft_error();
+		}
 		arg = malloc(sizeof(int));
 		if (!arg)
 		{
@@ -84,7 +91,10 @@ void	init_stack(t_stack **a, char **argv)
 	while (argv[i] != NULL)
 	{
 		if (is_arg_valid(argv[i]))
+		{
+			free_stack(a);
 			ft_error();
+		}
 		arg = malloc(sizeof(int));
 		if (!arg)
 		{
@@ -121,19 +131,21 @@ int	check_if_sorted(t_stack *a)
 void	check_duplicates(t_stack *lst)
 {
 	t_stack	*temp;
+	t_stack *temp2;
 
-	while (lst)
+	temp2 = lst;
+	while (temp2)
 	{
-		temp = lst->next;
+		temp = temp2->next;
 		while (temp)
 		{
-			if (lst->number == temp->number)
+			if (temp2->number == temp->number)
 			{
 				free_stack(&lst);
 				ft_error();
 			}
 			temp = temp->next;
 		}
-		lst = lst->next;
+		temp2 = temp2->next;
 	}
 }
