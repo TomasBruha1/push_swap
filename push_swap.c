@@ -6,13 +6,14 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/19 23:04:43 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/19 23:25:21 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// STATUS UPDATE, NOW: free array with errors in parsing
+// STATUS UPDATE, NOW: empty input (string) should return nothing and NOT an error. FIX IT
+// Why is "make" saying Nothing to be done for 'all'. When there is an update in the code.
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -26,7 +27,7 @@ int	main(int argc, char **argv)
 	a = NULL;
 	i = 1;
 	if (argc < 2 || argv[1][0] == '\0')
-		ft_error();
+		exit (2);
 	if (argc == 2)
 		init_parse_stack(&a, argv, 0);
 	if (argc > 2)
@@ -122,6 +123,8 @@ void	check_duplicates(t_stack *lst)
 	t_stack	*temp;
 	t_stack	*temp2;
 
+	if (!lst)
+		return ;
 	temp2 = lst;
 	while (temp2)
 	{
