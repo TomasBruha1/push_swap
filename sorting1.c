@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:41:46 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/19 19:20:48 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/19 22:16:11 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	sort_big(t_stack **a)
 		push_node_to_a(a, &b);
 	}
 	min_on_top(a);
-	// DO LATER free b || why free when its empty.
 }
 
 // I will find cheapest node and then set of instructions how to rotate

@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:22:09 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/19 19:11:20 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/19 22:15:53 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	ft_error(void)
 }
 
 // It will free particular stack.
-void free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
-	
+
 	if (!stack)
 		return ;
 	temp = *stack;
@@ -82,4 +82,19 @@ void free_stack(t_stack **stack)
 		free(*stack);
 		*stack = temp;
 	}
+}
+
+void	free_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i] != 0)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

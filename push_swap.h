@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/18 16:59:02 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/19 23:05:04 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_stack
 
 // PUSH_SWAP FTs
 
-void	init_parse_stack(t_stack **a, char **argv);
+void	init_parse_stack(t_stack **a, char **argv, int i);
 void	init_stack(t_stack **a, char **argv);
 int		check_if_sorted(t_stack *a);
 void	check_duplicates(t_stack *lst);
@@ -53,6 +53,7 @@ long	ft_atol(const char *nptr);
 void	ft_error(void);
 int		is_arg_valid(char *arg);
 void	free_stack(t_stack **stack);
+void	free_array(char **array);
 
 // LIST FTs
 

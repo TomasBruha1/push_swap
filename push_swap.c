@@ -6,24 +6,13 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/19 20:13:58 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/19 23:04:43 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// STATUS UPDATE, NOW: Implement FREE functions -> check libft bonus for free lst function.
-// Only FREE or also delete?
-// NEXT-> NORMINETTE
-
-// LEAKS: duplicate fixed
-// LEAKS: duplicate in string >> ft_split problem
-// LEAKS: 
-
-// On error don't forget to free stacks to avoid leaks.
-// make a list of functions that use memmory allock.
-// what if I make split on all the arguments starting with 1.
-// check functions to include prev or do I really need prev at all?
+// STATUS UPDATE, NOW: free array with errors in parsing
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
@@ -39,7 +28,7 @@ int	main(int argc, char **argv)
 	if (argc < 2 || argv[1][0] == '\0')
 		ft_error();
 	if (argc == 2)
-		init_parse_stack(&a, argv);
+		init_parse_stack(&a, argv, 0);
 	if (argc > 2)
 		init_stack(&a, argv);
 	check_duplicates(a);
@@ -51,25 +40,25 @@ int	main(int argc, char **argv)
 
 // It returns array with numbers(or other stuff) -> I will check args after.
 // argv[i] will be the same as array with args.
-void	init_parse_stack(t_stack **a, char **argv)
+void	init_parse_stack(t_stack **a, char **argv, int i)
 {
 	char	**temp;
-	int		i;
 	int		*arg;
 
 	temp = ft_split(argv[1], ' ');
-	i = 0;
 	while (temp[i])
 	{
 		if (is_arg_valid(temp[i]))
 		{
 			free_stack(a);
+			free_array(temp);
 			ft_error();
 		}
 		arg = malloc(sizeof(int));
 		if (!arg)
 		{
 			free(arg);
+			free_array(temp);
 			ft_error();
 		}
 		*arg = ft_atoi(temp[i]);
@@ -77,7 +66,7 @@ void	init_parse_stack(t_stack **a, char **argv)
 		free(arg);
 		i++;
 	}
-	free(temp);
+	free_array(temp);
 }
 
 // Here I initialize stack a with arguments from argv. They are checked
@@ -131,7 +120,7 @@ int	check_if_sorted(t_stack *a)
 void	check_duplicates(t_stack *lst)
 {
 	t_stack	*temp;
-	t_stack *temp2;
+	t_stack	*temp2;
 
 	temp2 = lst;
 	while (temp2)
