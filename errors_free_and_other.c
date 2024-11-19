@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:22:09 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/18 16:57:54 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/19 19:11:20 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 	
+	if (!stack)
+		return ;
 	temp = *stack;
 	while (*stack)
 	{
