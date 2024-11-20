@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:22:09 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/19 23:21:42 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:49:05 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_arg_valid(char *arg)
 			return (1);
 		i++;
 	}
-	if (ft_atol(arg) <= INT_MIN || ft_atol(arg) >= INT_MAX)
+	if (ft_atol(arg) < INT_MIN || ft_atol(arg) > INT_MAX)
 		return (1);
 	return (0);
 }
@@ -56,9 +56,8 @@ long	ft_atol(const char *nptr)
 		i++;
 	}
 	res = res * sign;
-	if (res <= INT_MIN || res >= INT_MAX)
-		ft_error();
 	return (res);
+	
 }
 
 // Writes Error and exits.
