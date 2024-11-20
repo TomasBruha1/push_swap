@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/20 10:56:45 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:26:56 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	check_if_sorted(t_stack *a)
 	int		i;
 
 	if (!a)
-		ft_error();
+		return (1);
 	i = a->number;
 	while (a)
 	{
