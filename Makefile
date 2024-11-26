@@ -6,7 +6,7 @@
 #    By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 15:34:26 by tbruha            #+#    #+#              #
-#    Updated: 2024/11/20 13:51:23 by tbruha           ###   ########.fr        #
+#    Updated: 2024/11/21 09:02:26 by tbruha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC		= 	src/push_swap.c src/lst_utils1.c src/lst_utils2.c \
 			src/operations_swap_and_push.c src/operations_rotations.c \
 			src/operations_reverse_rotations.c src/sorting1.c src/sorting2.c \
 			src/errors_free_and_other.c src/nodes_info1.c src/nodes_info2.c
-						
+
 OBJ		:=	$(SRC:%.c=%.o)
 
 all:	$(NAME)

@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:22:09 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/20 11:49:05 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/26 15:57:52 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	is_arg_valid(char *arg)
 	int	i;
 
 	i = 0;
+	if ((arg[i] == '-') && (arg[i + 1] == '0'))
+		return (1);
 	if ((arg[i] == '-' || arg[i] == '+') && ft_isdigit(arg[i + 1]) != 0)
 		i++;
 	while (arg[i])
@@ -57,14 +59,13 @@ long	ft_atol(const char *nptr)
 	}
 	res = res * sign;
 	return (res);
-	
 }
 
 // Writes Error and exits.
 void	ft_error(void)
 {
 	write(2, "Error\n", 6);
-	exit (2);
+	exit (1);
 }
 
 // It will free particular stack.

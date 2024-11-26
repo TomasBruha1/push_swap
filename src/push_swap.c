@@ -6,11 +6,13 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:08:10 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/20 12:00:26 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/11/26 15:53:17 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// check
 
 // I check number of arguments, if there is at least one we move on to init.
 // During init there are checks for valid arguments. Once we have stack a
