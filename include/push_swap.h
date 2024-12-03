@@ -6,7 +6,7 @@
 /*   By: tbruha <tbruha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:40 by tbruha            #+#    #+#             */
-/*   Updated: 2024/11/19 23:05:04 by tbruha           ###   ########.fr       */
+/*   Updated: 2024/12/03 16:38:30 by tbruha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 // STRUCTS
 
@@ -108,9 +108,5 @@ void	rrb(t_stack **b, int print);
 void	rrr(t_stack **a, t_stack **b, int print);
 void	fake_rra(t_stack **a);
 void	fake_rrb(t_stack **b);
-
-// HELPER >> DELETE LATER
-
-void	print_stack_stuff(t_stack *stack_a, t_stack *stack_b);
 
 #endif
